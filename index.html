@@ -1,1 +1,21 @@
-<h1>Hello World </h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" type=""image/jpg" href="assets/images/favicon.jpg">
+        
+        <title>My First Website</title>
+    </head>
+
+    <body>
+        <button onclick="doSomething()" style="font-size: 25; background-color:gray; color: blue; border-radius: 10px;">click me</button>
+
+        <p id="greeting">Hello</p>
+        <script>
+            function doSomething(){
+                document.getElementById("greeting").innerHTML = "goodbye"
+            }
+        </script>
+    </body>
+</html>
