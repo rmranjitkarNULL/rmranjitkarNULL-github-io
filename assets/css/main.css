@@ -4028,3 +4028,10 @@ input, select, textarea {
 .tiles article.projects-tile > header {
   text-align: left;  /* makes "Projects" text left-aligned */
 }
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* fills container, crops overflow */
+  display: block;      /* removes inline-gap space */
+}
