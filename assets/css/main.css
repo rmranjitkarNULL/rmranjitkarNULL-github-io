@@ -4035,3 +4035,14 @@ input, select, textarea {
   object-fit: cover;   /* fills container, crops overflow */
   display: block;      /* removes inline-gap space */
 }
+
+/* PROJECT TEMPLATES*/
+.spotlights img {
+  max-width: 2000px;  /* cap size */
+  width: 100%;       /* scale down if container is smaller */
+  height: auto;      /* preserve aspect ratio */
+  margin: 0 auto;    /* center horizontally */
+  display: block;
+  object-fit: cover;
+}
+
