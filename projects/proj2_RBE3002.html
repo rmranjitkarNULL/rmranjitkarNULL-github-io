@@ -37,103 +37,141 @@
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>Embedded Real-Time Digital Oscilloscope</h1>
+										<h1>Autonomous Mapping Robot</h1>
 									</header>
 										<p>
-											This project was a multi-stage development of a real-time digital oscilloscope and spectrum analyzer
-											on the TI EK-TM4C1294XL microcontroller with its booster pack. Across several iterations, the system
-											evolved from a bare-metal C/C++ application into a robust TI-RTOS-based platform. It ultimately supported
-											real-time signal processing, voltage scaling (100 mV–2 V/div), multi-scale time bases (50 µs–100 ms/div),
-											edge-trigger detection, live CPU load monitoring, FFT-based frequency analysis, and audio PWM output.
-											The overarching goal was to build an embedded instrumentation tool that preserved strict real-time
-											guarantees while continuously adding advanced features.
+											Our team of four developed an autonomous mapping robot that implements Simultaneous Localization and Mapping (SLAM) using ROS and Python. 
+											Over the course of the project, we integrated a LIDAR sensor for environment perception, 
+											implemented frontier-based exploration to identify unknown regions, and developed path planning and control strategies for navigation. 
+											The system combined localization, obstacle avoidance, and decision-making into a cohesive framework by incorporating A* for global path planning, 
+											pure pursuit for smooth trajectory following, and a potential fields–based control method that used LIDAR data to treat obstacles as repulsive forces for steering adjustments. 
+											Together, these components enabled the robot to autonomously build a map of its surroundings while exploring efficiently and safely.
 										</p>
 							</section>
-
 					</div>
-
-                    <div id="main">
-						<!-- One -->
-							<section id="two" class="spotlights">
-							<!--Section 1-->
+						<section id="two" class="spotlights">
+							<!--System Architecture-->
                                 <section>
-                                    <img src="../images/projects/proj1_EmbeddedOscop/image.png" alt="" data-position="top center" />
+									<img class="spotlight-arch" src="../images/projects/proj2_turtlebot/system_architecture.jpg" alt="" data-position="top center" />
+									<!--Get a new image...-->
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Design Approach</h3>
+												<h3>System Architecture</h3>
 											</header>
                                             <p>
-												The project began in bare-metal C/C++, where we implemented core oscilloscope functionality with edge-trigger search,
-												voltage scaling, and CPU load measurement. FIFO queues were introduced to eliminate data races between
-												ISRs and the main loop. The system was then ported to TI-RTOS, where the ADC ISR was converted into a
-												zero-latency Hardware Interrupt (Hwi), and responsibilities were distributed across prioritized tasks for
-												waveform capture, signal processing, display updates, and user input handling. Semaphores, Mailboxes, and
-												Mutexes ensured synchronization without shared-data bugs. Later stages extended the design with a
-												1024-point FFT using the KissFFT library, Blackman windowing for frequency analysis, and a migration to
-												DMA-based ping-pong buffering for efficient ADC sampling. Finally, advanced I/O features were added,
-												including Timer0A-based frequency measurement and PWM-driven audio playback, requiring careful
-												coordination of timers and synchronized ISR updates.
+												Our system was built on the TurtleBot3 platform and organized as a modular set of ROS nodes that communicated through topics and services. 
+												At the perception level, the gmapping package provided real-time SLAM to construct a 2D occupancy grid from LiDAR scans and odometry. 
+												For localization, we used Adaptive Monte Carlo Localization (AMCL) to maintain an accurate pose estimate through particle filtering. 
+												A custom FrontierFinder node identified unexplored boundaries in the map, while the PathPlanner node generated collision-free routes to selected frontiers using an A* algorithm on an inflated configuration space. 
+												These paths were then executed by the PathMovement node, which applied a pure pursuit controller to convert planned trajectories into smooth velocity commands. 
+												This modular structure allowed us to integrate mapping, exploration, planning, and control into a cohesive framework that could be tested and tuned independently.
 											</p>
 										</div>
 									</div>
 								</section>
-							<!--Section 2-->
-								<section>
-                                    <img src="../images/projects/proj1_EmbeddedOscop/falling_1v_50us.png" alt="" data-position="top center" />
+							<!--Pure Pursuit-->
+                                <section>
+                                    <img src="../images/projects/proj2_turtlebot/pp.gif" alt="" data-position="top center" />
+									<!--Make a Pure Pursuit Python animation...-->
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Implementation</h3>
+												<h3>Pure Pursuit</h3>
 											</header>
                                             <p>
-												At the core of the system was real-time sampling at 1–2 Msps, enabled by DMA buffering, adjustable
-												time bases, and trigger-synchronized capture. Under TI-RTOS scheduling, the Waveform Task guaranteed
-												sample collection and trigger detection, while the Processing Task scaled waveform data or executed FFT
-												computations. The Display Task refreshed the LCD with waveforms, frequency grids, labels, and CPU load
-												measurements, and the User Input Task managed button events through Mailboxes. CPU utilization was
-												displayed in real time by comparing background loop counts with ISR execution. Migrating from ISR-based
-												sampling to DMA reduced CPU load dramatically—from roughly 73% to 15% at 1 Msps and 30% at 2 Msps—leaving
-												significant headroom for other computations. FFT results were converted to decibel scale and rendered
-												as a spectrum, while users could still switch back to time-domain visualization. Additional interactive
-												features included rising and falling edge trigger modes, multi-level voltage scaling, real-time frequency
-												display, and audio playback via PWM.
+												We implemented a pure pursuit controller to enable smooth and continuous trajectory following. 
+												Instead of simply moving from waypoint to waypoint, the robot computed a lookahead point along the planned path and adjusted 
+												its steering to minimize the error between its current heading and the target point. 
+												This approach improved path smoothness and reduced oscillations, especially in narrow corridors. 
+												The controller incorporated safeguards for sharp turns, including rotation-in-place when angular corrections exceeded a threshold. 
+												Overall, pure pursuit provided stable and predictable navigation across varied path geometries.
 											</p>
 										</div>
 									</div>
 								</section>
-							<!--Section 3-->
+							<!--Frontier Exploration-->
 								<section>
-                                    <img src="../images/projects/proj1_EmbeddedOscop/20us_rising_1v_waveform.png" alt="" data-position="top center" />
+                                    <img src="Include Frontier Exploration GIF" alt="" data-position="top center" />
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Frontier Exploration</h3>
+											</header>
+                                            <p>
+												To drive autonomous exploration, we implemented a frontier-based strategy. 
+												The occupancy grid generated by SLAM was analyzed to detect frontiers, or boundaries between known and unknown regions. 
+												The system clustered candidate frontier cells, computed centroids, and ranked them using a scoring function based on both size and distance. 
+												The highest-scoring centroid was selected as the next exploration goal. 
+												This ensured that exploration was both efficient and comprehensive, prioritizing regions that would expand the map most effectively.
+											</p>
+										</div>
+									</div>
+								</section>
+							<!--Path Planning-->
+								<section>
+                                    <img src="Include Path Planning GIF " alt="" data-position="top center" />
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Path Planning</h3>
+											</header>
+                                            <p>
+												For global navigation, we developed a custom A* path planner. 
+												Operating over an inflated configuration space (C-space), the planner accounted for the robot’s footprint and maintained a buffer from obstacles. 
+												The heuristic combined Euclidean distance to the goal with distance-to-wall penalties and angle penalties, 
+												generating smoother and safer paths that avoided hugging walls or making excessive sharp turns. 
+												The planned path was published as a nav_msgs/Path and tracked in real time by the pure pursuit controller.											
+											</p>
+										</div>
+									</div>
+								</section>
+							<!--AMCL-->
+								<section>
+                                    <img src="Include AMCL GIF " alt="" data-position="top center" />
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Monte Carlo Localization</h3>
+											</header>
+                                            <p>
+												We used Adaptive Monte Carlo Localization (AMCL), a particle filter–based algorithm, to estimate the robot’s pose within the map. 
+												The algorithm maintained a distribution of possible poses and updated them based on LIDAR scans and odometry. 
+												Our implementation leveraged no-motion updates to improve localization accuracy while stationary, reducing drift without requiring unnecessary movement. 
+												Over time, the particle set converged toward the true robot pose, enabling reliable localization throughout exploration and mapping.
+											</p>
+										</div>
+									</div>
+								</section>
+							<!--Results-->
+                                <section>
+                                    <img src="Insert Results Image" alt="" data-position="top center" />
 									<div class="content">
 										<div class="inner">
 											<header class="major">
 												<h3>Results</h3>
 											</header>
                                             <p>
-												By the final stage, the platform operated as a dual-mode oscilloscope and spectrum analyzer with
-												audio generation capabilities, all while meeting strict real-time deadlines. The system consistently
-												achieved deterministic sampling without missed data, provided stable time- and frequency-domain displays,
-												and maintained low CPU load under RTOS scheduling. These results demonstrated how real-time operating
-												systems, DMA, and careful interrupt prioritization can transform a basic bare-metal program into a
-												scalable embedded instrumentation tool. The project reinforced key skills in real-time scheduling,
-												signal processing, DMA utilization, hardware/software co-design, and performance optimization for
-												embedded systems development.
+												The system was successfully deployed on a TurtleBot3 in a maze-like indoor environment. 
+												The robot efficiently mapped all reachable frontiers and completed exploration in 101 seconds with minimal human intervention. 
+												Path following was precise, with the pure pursuit controller producing smooth turns and stable tracking even in tight spaces. 
+												The robot also demonstrated the ability to return to its starting location within one robot radius, showing consistency in both navigation and localization. 
+												While we encountered challenges with localization drift during the final return phase, the system consistently performed robustly during mapping and exploration, 
+												validating the effectiveness of our frontier exploration, A* planning, and pure pursuit control strategies.		
 											</p>
 										</div>
 									</div>
 								</section>
 							</section>
-
 						<!-- View Projects -->
 							<section id="three">
 								<div class="inner">
 									<header class="major">
-										<h2>View Projects</h2>
+										<h2>View All Projects</h2>
 									</header>
 										<p>Go back and check out my other projects!</p>
 									<ul class="actions">
-										<li><a href="projects.html" class="button next">View All</a></li>
+										<li><a href="projectList.html" class="button next">View All</a></li>
 									</ul>
 								</div>
 							</section>
