@@ -33,64 +33,99 @@
 				<!-- Main -->
 					<div id="main" class="alt">
 
-						<!-- Overview -->
+						<!-- One -->
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>Project name</h1>
+										<h1>FishShocker9000</h1>
 									</header>
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
-                                    <p>Project description</p>
+										<p>
+											FishShocker9000 is an embedded system developed for UMass Chan Thyme Labs to support biological research involving zebrafish studies. 
+											The system is designed to generate controlled high-voltage pulses that can be used in experiments requiring precise electrical stimulation. 
+											At its core, the project combines custom PCB hardware, embedded C/C++ firmware, and testing scripts to provide researchers with a reliable, configurable tool. 
+											Looking forward, FishShocker9000 is being extended with a computer vision (CV) implementation to automate fish detection and stimulation, 
+											further streamlining experimental workflows and reducing the need for manual intervention.
+										</p>
 							</section>
-
 					</div>
-
-                    <div id="main">
-						<!-- One -->
-							<section id="two" class="spotlights">
-							<!--Section 1-->
+						<section id="two" class="spotlights">
+							<!--Circuit-->
                                 <section>
-                                    <img src="../images/pics/turtlebot.png" alt="" data-position="top center" />
+									<img class="spotlight-arch" src="../images/projects/proj3_FSH9K/schm.png" alt="" data-position="top center" />
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>1</h3>
+												<h3>Circuit</h3>
 											</header>
-                                            <p>I am a placeholder</p>
+                                            <p>
+												The FishShocker9000 circuit was built around a Teensy 4.1 microcontroller, which generates control signals with precise timing. 
+												These signals are converted into analog outputs using a DAC and amplified through 
+												an operational amplifier to achieve the desired output voltage. 
+												To safely deliver stimulation in water, the amplified signals are routed through 
+												H-bridges, which swap the polarity of the pulses to prevent continuous DC current and minimize electrolysis. 
+												Power for the entire system is supplied by a buck converter, stepping down 
+												the wall outlet voltage to stable levels for both the logic and power electronics. 
+												Finally, the controlled signals are delivered through metal plates, which act as electrodes to transmit the shocks in the zebrafish environment.
+											</p>
 										</div>
 									</div>
 								</section>
-							<!--Section 2-->
+							<!--PCB-->
+                                <section>
+                                    <img src="../images/projects/proj3_FSH9K/routing.png" alt="" data-position="top center" />
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>PCB</h3>
+											</header>
+                                            <p>
+												To integrate and streamline the hardware, we designed a 2-layer PCB in KiCad, which was fully routed and hand-assembled. 
+												The board includes mounting holes for secure installation and uses pogo pins to provide reliable 
+												electrical contact with both the stimulation plates and the Y-cell test chamber. 
+												The PCB consolidates the microcontroller, signal conditioning, and power delivery circuits into 
+												a compact and maintainable design, improving both reliability and usability for laboratory experiments.
+											</p>
+										</div>
+									</div>
+								</section>
+							<!--Firmware-->
 								<section>
-                                    <img src="../images/pics/turtlebot.png" alt="" data-position="top center" />
+                                    <img src="../images/projects/proj3_FSH9K/codeblock.png" alt="" data-position="top center" />
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>2</h3>
+												<h3>Firmware</h3>
 											</header>
-                                            <p>I am a placeholder</p>
+                                            <p>
+												Firmware for FishShocker9000 was developed in C/C++ using the PlatformIO environment, giving the system precise, deterministic control over pulse generation and timing. 
+												The modular code structure (include/, src/, lib/) enables scalability and makes it easier to extend functionality in later versions. 
+												The firmware includes routines for timing adjustments, pulse shaping, and fail-safes to protect the system during high-voltage operation. 
+												As the project evolves, the firmware will also serve as the interface point between 
+												the custom PCB hardware and the computer vision module, enabling automated, closed-loop control of fish stimulation.
+											</p>
 										</div>
 									</div>
 								</section>
-							<!--FishShocker9K-->
-								<section class="fishshocker">
-								<a href="generic.html" class="image">
-									<img src="../images/projects/proj3_FSH9K/FishShocker9000.png" alt="" data-position="center center" />
-								</a>
-								<div class="content">
-									<div class="inner">
-									<header class="major">
-										<h3>FishShocker9000</h3>
-									</header>
-									<p>Custom PCB design to shock zebra fish for "research purposes"</p>
-									<ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
-									</ul>
+							<!--Software Testing-->
+								<section>
+                                    <img src="../images/projects/proj3_FSH9K/FishShocker9000.png" alt="" data-position="top center" />
+									<!--Include picture of oscilloscope and SPI working as intended-->
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Software Testing</h3>
+											</header>
+                                            <p>
+												To validate performance and ensure reliability, supporting scripts in Python were developed to automate testing and parameter tuning. 
+												These scripts, combined with oscilloscope measurements, allowed for systematic validation of pulse timing, amplitude, and stability across different test conditions. 
+												The use of a software-driven test framework not only provided repeatability but also enabled early preparation for integration with CV-based automation. 
+												In future versions, the software layer will expand to include image processing pipelines 
+												that can detect zebrafish in real time and trigger electrical stimulation automatically, reducing the workload on researchers and improving experimental consistency.
+											</p>
+										</div>
 									</div>
-								</div>
 								</section>
-
-
+							</section>
 						<!-- View Projects -->
 							<section id="three">
 								<div class="inner">
