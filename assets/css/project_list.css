@@ -1,0 +1,90 @@
+/* Project Grid Styles — override or extend HTML5UP defaults */
+
+.projects {
+  padding: 3em 0;
+}
+
+.projects h2 {
+  text-align: center;
+  font-size: 2.3em;
+  margin-bottom: 1.5em;
+}
+
+/* Grid layout */
+.projects-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* Card styling */
+.project-card {
+  background: #1e1f21;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
+
+/* Image */
+.project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: block;
+}
+
+/* Content */
+.project-card .content {
+  padding: 20px;
+}
+
+.project-card .content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.project-card .content p {
+  color: #cfcfcf;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tags span {
+  background-color: #2f3336;
+  border: 1px solid #3d4145;
+  color: #d3d3d3;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+.tags span:hover {
+  background-color: #44484b;
+}
+
+/* Reduce top spacing between banner and project grid */
+#main.alt {
+  padding-top: 0.1em; /* default was ~4em */
+}
+
+.projects {
+  margin-top: 0;      /* remove extra space above grid */
+  padding-top: 0.1em;   /* tighten vertical gap */
+}
