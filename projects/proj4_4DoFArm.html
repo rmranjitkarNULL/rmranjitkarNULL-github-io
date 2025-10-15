@@ -1,197 +1,169 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Project Name</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>4-DoF Serial Manipulator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+      <!-- Header -->
+      <header id="header">
+        <a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
+        <nav><a href="#menu">Menu</a></nav>
+      </header>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="../index.html">Home</a></li>
-							<li><a href="../aboutme.html">About Me</a></li>
-							<li><a href="projects.html">Projects</a></li>
-						</ul>
-					</nav>
+      <!-- Menu -->
+      <nav id="menu">
+        <ul class="links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../aboutme.html">About Me</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
 
+      <!-- Overview -->
+      <div id="main" class="alt">
+        <section id="one">
+          <div class="inner">
+            <header class="major">
+              <h1>4-DoF Serial Manipulator: Pick and Place</h1>
+            </header>
+            <span class="image main"><img src="../assets/images/pic11.jpg" alt="" /></span>
+            <p>
+              The 4-DoF Serial Manipulator project demonstrates a complete vision-guided robotic pick-and-place system developed in MATLAB.
+              It integrates forward and inverse kinematics, trajectory generation, and computer vision to autonomously detect, grasp,
+              and sort colored objects. Using a calibrated camera and a Dynamixel-based arm, the robot achieved sub-millimeter
+              localization accuracy and smooth, repeatable motion control.
+            </p>
+          </div>
+        </section>
+      </div>
 
-				<!-- Main -->
-					<div id="main" class="alt">
+      <!-- Main Content Sections -->
+      <div id="main">
+        <section id="two" class="spotlights">
 
-						<!-- Overview -->
-							<section id="one">
-								<div class="inner">
-									<header class="major">
-										<h1>4-DoF Serial Manipulator: Pick and Place</h1>
-									</header>
-									<span class="image main"><img src="../assets/images/pic11.jpg" alt="" /></span>
-                                    <p>
-										The 4-DoF Serial Manipulator project demonstrates a complete vision-guided robotic pick-and-place system developed in MATLAB. 
-										It integrates forward and inverse kinematics, trajectory generation, 
-										and computer vision to autonomously detect, grasp, and sort colored objects. 
-										Using a calibrated camera and a Dynamixel-based arm, the robot achieved sub-millimeter 
-										localization accuracy and smooth, repeatable motion control.
-									</p>
-							</section>
+          <!-- Section 1 -->
+          <section>
+            <img src="../assets/images/projects/proj4_4DoFArm/systemArch.png" alt="" data-position="top center" />
+            <div class="content">
+              <div class="inner">
+                <header class="major"><h3>System Architecture</h3></header>
+                <p>
+                  The manipulator integrates two main subsystems: a vision system for detecting and localizing objects, and a robot control system for motion execution.
+                  A calibrated USB camera captures the workspace and provides object coordinates to the robot controller. Modular MATLAB classes
+                  (<code>ImageProcessor</code> and <code>Robot</code>) manage perception and motion independently, ensuring scalability and robustness.
+                </p>
+              </div>
+            </div>
+          </section>
 
-					</div>
+          <!-- Section 2 -->
+          <section>
+            <img src="../assets/images/projects/proj4_4DoFArm/motionPath.png" alt="" data-position="top center" />
+            <div class="content">
+              <div class="inner">
+                <header class="major"><h3>Kinematic Modeling & Motion Control</h3></header>
+                <p>
+                  Motion was governed by both analytical and numerical inverse kinematics. Forward kinematics were derived using Denavit–Hartenberg parameters,
+                  while analytical inverse kinematics provided efficient closed-form joint solutions. A Damped Least Squares (DLS) numerical solver
+                  complemented this approach for stability near singularities. Smooth trajectories were generated using cubic and quintic interpolation,
+                  enabling continuous and precise motion.
+                </p>
+              </div>
+            </div>
+          </section>
 
-                    <div id="main">
-						<!-- One -->
-							<section id="two" class="spotlights">
-							<!--Section 1-->
-                                <section>
-                                    <img src="../assets/images/projects/proj4_4DoFArm/systemArch.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>System Architecture</h3>
-											</header>
-                                            <p>
-												The manipulator integrates two main subsystems: a vision system for detecting and localizing objects, 
-												and a robot control system for motion execution. A calibrated USB camera captures the workspace 
-												and provides object coordinates to the robot controller. Modular MATLAB classes (ImageProcessor and Robot) 
-												manage perception and motion independently, ensuring scalability and robustness.
-											</p>
-										</div>
-									</div>
-								</section>
+          <!-- Section 3 -->
+          <section>
+            <img src="../assets/images/projects/proj4_4DoFArm/staticandBallmask.png" alt="" data-position="top center" />
+            <div class="content">
+              <div class="inner">
+                <header class="major"><h3>Computer Vision & Calibration</h3></header>
+                <p>
+                  The computer vision subsystem used intrinsic and extrinsic calibration to map camera pixels to real-world robot coordinates.
+                  A color-segmentation pipeline isolated colored objects on a checkerboard surface, computed centroids, and transformed them into
+                  3-D task-space coordinates. This mapping enabled autonomous pick-and-place execution with a mean localization error of ~1 mm.
+                </p>
+              </div>
+            </div>
+          </section>
 
-							<!--Section 2-->
-								<section>
-                                    <img src="../assets/images/projects/proj4_4DoFArm/motionPath.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Kinematic Modeling & Motion Control</h3>
-											</header>
-                                            <p>
-												Motion was governed by both analytical and numerical inverse kinematics. 
-												Forward kinematics were derived using Denavit–Hartenberg parameters, 
-												while analytical inverse kinematics provided efficient closed-form joint solutions. 
-												A Damped Least Squares (DLS) numerical solver complemented this approach for stability near singularities. 
-												Smooth trajectories were generated using cubic and quintic interpolation,
-												enabling continuous and precise motion.
-											</p>
-										</div>
-									</div>
-								</section>
-								
-							<!--Section 3-->
-								<section>
-                                    <img src="../assets/images/projects/proj4_4DoFArm/staticandBallmask.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Computer Vision & Calibration</h3>
-											</header>
-                                            <p>
-												The computer vision subsystem used intrinsic and extrinsic calibration to map camera pixels 
-												to real-world robot coordinates. A color-segmentation pipeline isolated colored objects on a 
-												checkerboard surface, computed centroids, and transformed them into 3-D task-space coordinates. 
-												This mapping enabled autonomous pick-and-place execution with a mean localization error of ~1 mm.
-											</p>
-										</div>
-									</div>
-								</section>
+          <!-- Section 4 -->
+          <section>
+            <video autoplay loop muted playsinline width="100%" height="auto">
+              <source src="../assets/images/projects/proj4_RBE3001/3001VidShort.mp4" type="video/mp4" />
+            </video>
+            <div class="content">
+              <div class="inner">
+                <header class="major"><h3>Results and Performance</h3></header>
+                <p>
+                  The system achieved reliable and precise vision-guided manipulation. Intrinsic calibration error was below 1 pixel,
+                  and grasp success exceeded 94% across 30 trials. Real-world positional error averaged 1 mm, and motion trajectories
+                  showed smooth cubic interpolation between key poses. Each pick-and-place cycle completed in ~7 seconds.
+                </p>
+              </div>
+            </div>
+          </section>
 
-							<!--Section 4-->
-								<section>
-									<video autoplay loop muted playsinline width="100%" height="auto">
-										<source src="../assets/images/projects/proj4_RBE3001/3001VidShort.mp4" type="video/mp4" />
-									</video>
-									<div class="content">
-										<div class="inner">
-										<header class="major">
-											<h3>Results and Performance</h3>
-										</header>
-										<p>
-											The system achieved reliable and precise vision-guided manipulation. 
-											Intrinsic calibration error was below 1 pixel, and grasp success exceeded 94% across 30 trials. 
-											Real-world positional error averaged 1 mm, and motion 
-											trajectories showed smooth cubic interpolation between key poses. 
-											Each pick-and-place cycle completed in ~7 seconds.
-										</p>
-										</div>
-									</div>
-								</section>
-							
-						<!-- View Projects -->
-							<section id="three">
-								<div class="inner">
-									<header class="major">
-										<h2>View All Projects</h2>
-									</header>
-										<p>Go back and check out my other projects!</p>
-									<ul class="actions">
-										<li><a href="projectList.html" class="button next">View All</a></li>
-									</ul>
-								</div>
-							</section>						
-					</div>
-				<br>
+        </section>
+      </div>
 
-				<!-- Contact -->
-					<section class="split">
-						<!-- Email -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon solid alt fa-envelope"></span>
-								Email
-							</h3>
-							<a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
-							</div>
-						</section>
+		<!-- View All Projects (perfectly centered) -->
+		<section id="three" class="view-all-centered">
+		<div class="inner">
+			<header class="major">
+			<h2>View All Projects</h2>
+			</header>
+			<p>Go back and check out my other projects!</p>
+			<ul class="actions">
+			<li><a href="projects.html" class="button next">View All</a></li>
+			</ul>
+		</div>
+		</section>
 
-						<!-- LinkedIn -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon brands alt fa-linkedin-in"></span>
-								LinkedIn
-							</h3>
-							<a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
-							</div>
-						</section>
+      <br />
 
-						<!-- GitHub -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon brands alt fa-github"></span>
-								GitHub
-							</h3>
-							<a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
-							</div>
-						</section>
-					</section>
+      <!-- Contact -->
+      <section class="split">
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon solid alt fa-envelope"></span>Email</h3>
+            <a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
+          </div>
+        </section>
 
-			</div>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon brands alt fa-linkedin-in"></span>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
+          </div>
+        </section>
 
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.scrolly.min.js"></script>
-			<script src="../assets/js/jquery.scrollex.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon brands alt fa-github"></span>GitHub</h3>
+            <a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
+          </div>
+        </section>
+      </section>
 
-	</body>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+  </body>
 </html>

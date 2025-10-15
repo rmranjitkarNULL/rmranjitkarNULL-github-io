@@ -4046,4 +4046,28 @@ input, select, textarea {
   object-fit: cover;
 }
 
-/* PROJECT PAGES */
+/* Center the entire View All Projects section */
+.view-all-centered {
+  text-align: center;
+  padding: 4em 0;
+}
+
+/* Override .major default alignment */
+.view-all-centered .major {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Center the button horizontally */
+.view-all-centered .actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5em;
+}
+
+/* Optional: limit width for readability */
+.view-all-centered .inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
