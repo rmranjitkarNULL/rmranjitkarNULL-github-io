@@ -5,6 +5,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/project_list.css" /> <!-- grid + hover video style -->
+    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+  </head>
+
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+      <!-- Header -->
+      <header id="header" class="alt style2">
+        <a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
+        <nav><a href="#menu">Menu</a></nav>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <ul class="links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../aboutme.html">About Me</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Projects</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="stylesheet" href="../assets/css/project_list.css" /> <!-- our new grid style -->
     <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
   </head>
@@ -50,44 +79,71 @@
         <section id="projects" class="projects">
           <div class="inner">
             <div class="projects-grid">
-              <!-- Project 1 -->
-              <div class="project-card" data-tags="ros c++">
-                <img src="../images/projects/dogbot.jpg" alt="Stair Climbing Robot Dog">
-                <div class="content">
-                  <h3>Robotic Arm</h3>
-                  <p>A 4-DOF robotic arm designed for pick-and-place</p>
-                  <div class="tags">
-                    <span>MATLAB</span>
-                  </div>
-                </div>
-              </div>
 
-              <!-- Project 2 -->
-              <div class="project-card" data-tags="ros python slam">
-                <img src="../images/projects/mapping-robot.jpg" alt="Autonomous Mapping Robot">
-                <div class="content">
-                  <h3>Autonomous Mapping Robot</h3>
-                  <p>An implementation of SLAM (Simultaneous Localization and Mapping)</p>
-                  <div class="tags">
-                    <span>ROS</span>
-                    <span>Python</span>
+              <!-- RBE 3001 - 4-DoF Arm -->
+              <a href="proj1_4DoFArm.html" class="project-link">
+                <div class="project-card" data-tags="MATLAB">
+                  <img src="../assets/images/projects/proj4_RBE3001/robotArm.jpg" alt="4-DoF Robot Arm">
+                  <div class="content">
+                    <h3>Robotic Arm</h3>
+                    <p>A 4-DOF robotic arm designed for pick-and-place</p>
+                    <div class="tags">
+                      <span>MATLAB</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              <!-- Project 3 -->
-              <div class="project-card" data-tags="matlab robotics">
-                <img src="../images/projects/robotic-arm.jpg" alt="Robotic Arm">
-                <div class="content">
-                  <h3>Robotic Arm</h3>
-                  <p>A 4-DOF robotic arm designed for pick-and-place</p>
-                  <div class="tags">
-                    <span>MATLAB</span>
+              <!-- Embedded Oscilloscope -->
+              <a href="proj1_EmbeddedOscope.html" class="project-link">
+                <div class="project-card" data-tags="C/C++ RTOS">
+                  <img src="../assets/images/projects/proj1_EmbeddedOscop/escope.png" alt="TI-Board">
+                  <div class="content">
+                    <h3>Embedded Oscilloscope</h3>
+                    <p>An Embedded Oscilloscope programmed bare-metal and RTOS</p>
+                    <div class="tags">
+                      <span>C/C++</span>
+                      <span>RTOS</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
+
+              <!-- RBE 3002 - LiDAR Robot -->
+              <a href="proj2_RBE3002.html" class="project-link">
+                <div class="project-card" data-tags="ROS Python Linux">
+                  <img src="../assets/images/projects/proj2_turtlebot/turtlebot.png" alt="Turtlebot">
+                  <div class="content">
+                    <h3>Autonomous Mapping Robot</h3>
+                    <p>A robot using SLAM to traverse a maze</p>
+                    <div class="tags">
+                      <span>ROS</span>
+                      <span>Python</span>
+                      <span>Linux</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <!-- FSHKR9K -->
+              <a href="proj3_fshkr9k.html" class="project-link">
+                <div class="project-card" data-tags="C/C++ PCB Python CircuitDesign">
+                  <img src="../assets/images/projects/proj3_FSH9K/FishShocker9000.png" alt="FSHKR9K PCB">
+                  <div class="content">
+                    <h3>FishShocker9000</h3>
+                    <p>A custom Embedded System designed to shock Zebra fish for research</p>
+                    <div class="tags">
+                      <span>C/C++</span>
+                      <span>PCB</span>
+                      <span>Python</span>
+                      <span>Circuit Design</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+                
+
             </div>
-
           </div>
         </section>
 
@@ -133,3 +189,17 @@
     <script src="../assets/js/main.js"></script>
   </body>
 </html>
+
+<!-- Project -->
+              <!-- <a href="" class="project-link">
+                <div class="project-card" data-tags="ros c++">
+                  <img src="../assets/images/" alt="">
+                  <div class="content">
+                    <h3></h3>
+                    <p></p>
+                    <div class="tags">
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              </a> -->
