@@ -1,0 +1,181 @@
+/* Project Grid Styles — override or extend HTML5UP defaults */
+
+.projects {
+  padding: 3em 0;
+}
+
+.projects h2 {
+  text-align: center;
+  font-size: 2.3em;
+  margin-bottom: 1.5em;
+}
+
+/* Grid layout */
+.projects-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* Card styling */
+.project-card {
+  background: #1e1f21;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
+
+/* Image */
+.project-card img {
+  width: 100%;
+  height: 320px; /* was 220px */
+  object-fit: cover;
+  display: block;
+}
+
+/* Content */
+.project-card .content {
+  padding: 20px;
+}
+
+.project-card .content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.project-card .content p {
+  color: #cfcfcf;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tags span {
+  background-color: #2f3336;
+  border: 1px solid #3d4145;
+  color: #d3d3d3;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+.tags span:hover {
+  background-color: #44484b;
+}
+
+/* Reduce top spacing between banner and project grid */
+#main.alt {
+  padding-top: 0.1em; /* default was ~4em */
+}
+
+.projects {
+  margin-top: 0;      /* remove extra space above grid */
+  padding-top: 0.1em;   /* tighten vertical gap */
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 320px; /* same as your image height */
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.image-container img,
+.image-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide video by default */
+.hover-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+/* On hover — fade video in */
+.project-card:hover .hover-video {
+  opacity: 1;
+}
+
+/* Optionally fade image out */
+.project-card:hover .static-img {
+  opacity: 0;
+}
+
+/* Make the whole card clickable without the theme's link underline/border */
+.project-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 0 !important;           /* remove HTML5UP link border */
+  border-bottom: 0 !important;    /* belt + suspenders */
+  box-shadow: none !important;
+}
+.project-link:hover {
+  color: inherit;
+  border: 0 !important;
+  border-bottom: 0 !important;
+}
+
+/* ---------- Uniform Project Card Heights ---------- */
+
+/* 1. Make grid cells align evenly in each row */
+.projects-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: stretch; /* ensures each grid item is the same height in a row */
+}
+
+/* 2. Make the <a> link and card fill their grid cell */
+.project-link,
+.project-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Fix image size for consistency */
+.project-card img {
+  height: 320px;
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* 4. Let the content section stretch and stay even */
+.project-card .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 5. Optional: limit text overflow (keeps all cards neat) */
+.project-card .content p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* show only two lines */
+  -webkit-box-orient: vertical;
+}
