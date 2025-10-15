@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>2-DoF Planar Manipulator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="../aboutme.html">About Me</a></li>
+							<li><a href="projects.html">Projects</a></li>
+						</ul>
+					</nav>
+
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- Overview -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>2-DoF Planar Manipulator</h1>
+									</header>
+                                    <p>
+										The project involved designing, fabricating, and testing a 2-DOF translational manipulator mounted on a Pololu Romi 32U4 mobile platform to 
+										autonomously swap boxes across a three-level shelf. The system was composed entirely of custom 3D-printed ABS components, including 
+										linkages, gears, and bearing mounts, all modeled and iteratively refined in SolidWorks. Each component underwent finite element analysis 
+										(FEA) to ensure strength and stiffness while minimizing weight, and motion simulations were conducted to verify link maneuverability, 
+										workspace reachability, and parallel end-effector motion before fabrication. A 20:1 worm-gear reduction provided the necessary torque for 
+										actuation, while a pantograph linkage maintained the gripper’s parallel orientation to the ground. 
+										Together, these design elements resulted in a robust, efficient manipulator capable of precise and repeatable mechanical operation.
+									</p>
+							</section>
+
+					</div>
+
+                    <div id="main">
+						<!-- One -->
+							<section id="two" class="spotlights">
+							<!--Section 1-->
+                                <section>
+                                    <img src="../assets/images/projects/proj5_RBE2001/RBE200Gearbox.png" alt="" data-position="top center" />
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Design and Fabrication</h3>
+											</header>
+                                            <p>
+												The manipulator was built around a five-bar planar linkage, driven by a DC motor through a 20:1 worm-gear stage and a 
+												servo motor with a 2:1 gear reduction for smoother, slower motion. All links, mounts, and structural elements were custom-designed 
+												and 3D-printed in ABS, providing flexibility for rapid iteration. Bearings and press-fit axles ensured low-friction joints and 
+												consistent alignment. The pantograph-style parallelogram connecting the end-effector maintained horizontal orientation throughout its 
+												motion, simplifying grasping and improving mechanical precision. Emphasis was placed on geometric symmetry, compactness, and manufacturability 
+												using student-accessible fabrication methods.
+											</p>
+										</div>
+									</div>
+								</section>
+
+							<!--Section 2-->
+								<section>
+                                    <video autoplay loop muted playsinline width="100%" height="auto">
+										<source src="../assets/images/projects/proj5_RBE2001/sim.mp4" type="video/mp4" />
+									</video>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Analysis & Simulation</h3>
+											</header>
+                                            <p>
+												The design process was heavily analysis-driven. Using SolidWorks Simulation, 
+												FEA was performed on critical links to confirm 
+												safety factors above 2.0 under expected loading. 
+												Free-body diagrams (FBDs) and MATLAB modeling quantified forces and torques at each joint, 
+												validating actuator sizing and link geometry. 
+												Additional tipping and stability calculations 
+												were performed to ensure the Romi platform maintained balance at full extension. 
+												These analyses guided design refinements—such as shortening the upper links and increasing bushing wall
+												thickness—to maximize stiffness while minimizing weight and part count.
+											</p>
+										</div>
+									</div>
+								</section>
+
+							<!--Section 3-->
+								<section>
+                                    <img src="../assets/images/projects/proj5_RBE2001/romiRenderNice.png" alt="" data-position="top center" />
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Control & System Integration</h3>
+											</header>
+                                            <p>
+												While the project emphasized mechanical design, the control system enabled smooth, coordinated motion. 
+												The Romi chassis provided base mobility, and onboard microcontrollers handled servo and motor actuation using inverse-kinematics-based 
+												position control. Commands were issued over serial communication for precise incremental movement. 
+												The software layer primarily ensured reliable coordination between wheel movement 
+												and manipulator motion, complementing the mechanical system’s inherent stability and accuracy without overcomplicating the architecture.
+											</p>
+										</div>
+									</div>
+								</section>
+								
+							<!--Section 4-->
+								<section>
+                                    <video autoplay loop muted playsinline width="100%" height="auto">
+										<source src="../assets/images/projects/proj5_RBE2001/2001GripperDemo.mp4" type="video/mp4" />
+									</video>
+									<div class="content">
+										<div class="inner">
+											<header class="major">
+												<h3>Testing & Demonstration</h3>
+											</header>
+                                            <p>
+												During physical testing, the manipulator successfully executed all project deliverables, including navigating to the shelf, 
+												grasping and swapping boxes at multiple heights, and returning to its starting position. The design withstood extended 
+												operation without structural deformation or component failure. Performance metrics such as link deflection, repeatability, 
+												and grasp consistency matched simulated predictions. The system demonstrated high reliability under load and maintained end-effector 
+												alignment across the entire workspace. Despite early challenges—such as servo overheating and battery voltage drops—iterative mechanical 
+												and wiring refinements produced a stable and fully functional prototype that met all competition requirements.
+											</p>
+										</div>
+									</div>
+								</section>
+							
+						<!-- View Projects -->
+							<section id="three">
+								<div class="inner">
+									<header class="major">
+										<h2>View All Projects</h2>
+									</header>
+										<p>Go back and check out my other projects!</p>
+									<ul class="actions">
+										<li><a href="projectList.html" class="button next">View All</a></li>
+									</ul>
+								</div>
+							</section>						
+					</div>
+				<br>
+
+				<!-- Contact -->
+					<section class="split">
+						<!-- Email -->
+						<section>
+							<div class="contact-method">
+							<h3>
+								<span class="icon solid alt fa-envelope"></span>
+								Email
+							</h3>
+							<a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
+							</div>
+						</section>
+
+						<!-- LinkedIn -->
+						<section>
+							<div class="contact-method">
+							<h3>
+								<span class="icon brands alt fa-linkedin-in"></span>
+								LinkedIn
+							</h3>
+							<a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
+							</div>
+						</section>
+
+						<!-- GitHub -->
+						<section>
+							<div class="contact-method">
+							<h3>
+								<span class="icon brands alt fa-github"></span>
+								GitHub
+							</h3>
+							<a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
+							</div>
+						</section>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
