@@ -32,14 +32,15 @@
         <section id="one">
           <div class="inner">
             <header class="major">
-              <h1>4-DoF Serial Manipulator: Pick and Place</h1>
+              <h1>4-DoF Serial Manipulator: Vision-Guided Pick-and-Place</h1>
             </header>
-            <span class="image main"><img src="../assets/images/pic11.jpg" alt="" /></span>
+            <span class="image main"><img src="../assets/images/pic11.jpg" alt="4-DoF Serial Manipulator Overview" /></span>
             <p>
-              The 4-DoF Serial Manipulator project demonstrates a complete vision-guided robotic pick-and-place system developed in MATLAB.
-              It integrates forward and inverse kinematics, trajectory generation, and computer vision to autonomously detect, grasp,
-              and sort colored objects. Using a calibrated camera and a Dynamixel-based arm, the robot achieved sub-millimeter
-              localization accuracy and smooth, repeatable motion control.
+              This project presents a fully integrated <strong>vision-guided robotic pick-and-place system</strong> built in MATLAB and implemented
+              on a <strong>4-DoF Dynamixel manipulator</strong>. The system combines <strong>forward and inverse kinematics</strong>,
+              <strong>differential kinematics</strong>, and <strong>trajectory generation</strong> with <strong>computer vision-based perception</strong>
+              for autonomous object detection, grasping, and sorting. Using precise <strong>intrinsic and extrinsic calibration</strong>,
+              the manipulator achieved sub-millimeter localization accuracy and smooth, repeatable motion across the workspace.
             </p>
           </div>
         </section>
@@ -51,14 +52,17 @@
 
           <!-- Section 1 -->
           <section>
-            <img src="../assets/images/projects/proj4_4DoFArm/systemArch.png" alt="" data-position="top center" />
+            <img src="../assets/images/projects/proj4_4DoFArm/systemArch.png" alt="System Architecture Diagram" data-position="top center" />
             <div class="content">
               <div class="inner">
                 <header class="major"><h3>System Architecture</h3></header>
                 <p>
-                  The manipulator integrates two main subsystems: a vision system for detecting and localizing objects, and a robot control system for motion execution.
-                  A calibrated USB camera captures the workspace and provides object coordinates to the robot controller. Modular MATLAB classes
-                  (<code>ImageProcessor</code> and <code>Robot</code>) manage perception and motion independently, ensuring scalability and robustness.
+                  The manipulator’s architecture was divided into two modular subsystems: a <strong>vision system</strong> for real-time
+                  object detection and a <strong>robot control system</strong> for motion execution. A calibrated USB camera captured the workspace
+                  and provided object centroids to MATLAB’s <strong>ImageProcessor</strong> class, which mapped pixels to world coordinates
+                  using camera calibration parameters. These target locations were passed to the <strong>Robot</strong> class, which executed
+                  motion commands through <strong>blocking joint-space</strong> and <strong>task-space control</strong> routines. 
+                  This modular framework enabled independent debugging, rapid iteration, and reliable synchronization between perception and control.
                 </p>
               </div>
             </div>
@@ -66,15 +70,17 @@
 
           <!-- Section 2 -->
           <section>
-            <img src="../assets/images/projects/proj4_4DoFArm/motionPath.png" alt="" data-position="top center" />
+            <img src="../assets/images/projects/proj4_4DoFArm/motionPath.png" alt="Manipulator Motion Path" data-position="top center" />
             <div class="content">
               <div class="inner">
                 <header class="major"><h3>Kinematic Modeling & Motion Control</h3></header>
                 <p>
-                  Motion was governed by both analytical and numerical inverse kinematics. Forward kinematics were derived using Denavit–Hartenberg parameters,
-                  while analytical inverse kinematics provided efficient closed-form joint solutions. A Damped Least Squares (DLS) numerical solver
-                  complemented this approach for stability near singularities. Smooth trajectories were generated using cubic and quintic interpolation,
-                  enabling continuous and precise motion.
+                  Robot motion was governed by a combination of <strong>analytical and numerical inverse kinematics</strong> for precision
+                  and stability. <strong>Forward kinematics</strong> were formulated using the standard <strong>Denavit–Hartenberg (DH) convention</strong>,
+                  providing a geometric basis for link transformation. Analytical IK offered efficient closed-form joint solutions, while
+                  the <strong>Damped Least Squares (DLS)</strong> numerical method improved stability near singularities. Smooth,
+                  continuous trajectories were produced using <strong>cubic and quintic polynomial interpolation</strong>, ensuring
+                  bounded velocity and acceleration profiles for each pick-and-place cycle.
                 </p>
               </div>
             </div>
@@ -82,14 +88,16 @@
 
           <!-- Section 3 -->
           <section>
-            <img src="../assets/images/projects/proj4_4DoFArm/staticandBallmask.png" alt="" data-position="top center" />
+            <img src="../assets/images/projects/proj4_4DoFArm/staticandBallmask.png" alt="Vision Calibration and Segmentation" data-position="top center" />
             <div class="content">
               <div class="inner">
                 <header class="major"><h3>Computer Vision & Calibration</h3></header>
                 <p>
-                  The computer vision subsystem used intrinsic and extrinsic calibration to map camera pixels to real-world robot coordinates.
-                  A color-segmentation pipeline isolated colored objects on a checkerboard surface, computed centroids, and transformed them into
-                  3-D task-space coordinates. This mapping enabled autonomous pick-and-place execution with a mean localization error of ~1 mm.
+                  The <strong>vision subsystem</strong> employed MATLAB’s Computer Vision Toolbox to implement both <strong>intrinsic</strong> and
+                  <strong>extrinsic calibration</strong>, mapping 2-D image coordinates into 3-D robot coordinates. A <strong>color segmentation pipeline</strong>
+                  in HSV space isolated colored objects on a checkerboard plane, with <strong>centroid detection</strong> used to estimate positions in real time.
+                  The calibration maintained a mean reprojection error below one pixel, enabling <strong>millimeter-level localization accuracy</strong>.
+                  Through this precise calibration, the manipulator could autonomously detect, classify, and sort multiple colored targets with high repeatability.
                 </p>
               </div>
             </div>
@@ -104,9 +112,13 @@
               <div class="inner">
                 <header class="major"><h3>Results and Performance</h3></header>
                 <p>
-                  The system achieved reliable and precise vision-guided manipulation. Intrinsic calibration error was below 1 pixel,
-                  and grasp success exceeded 94% across 30 trials. Real-world positional error averaged 1 mm, and motion trajectories
-                  showed smooth cubic interpolation between key poses. Each pick-and-place cycle completed in ~7 seconds.
+                  Experimental results demonstrated <strong>consistent and precise autonomous manipulation</strong>. 
+                  The system achieved an average <strong>localization error of 1.03 mm</strong> and a <strong>grasp success rate of 94%</strong> across 30 trials.
+                  The end-effector’s measured trajectories closely matched planned cubic and quintic profiles, confirming the accuracy of
+                  the <strong>inverse kinematics solver</strong> and the <strong>Dynamixel servo control</strong>. 
+                  Each complete pick-and-place cycle, including detection, trajectory computation, and grasping, averaged about 7 seconds.
+                  These results validated the project’s emphasis on <strong>modular system design</strong>, <strong>calibration accuracy</strong>,
+                  and <strong>smooth trajectory generation</strong> as the foundation for reliable autonomous robotic operation.
                 </p>
               </div>
             </div>
@@ -115,18 +127,16 @@
         </section>
       </div>
 
-		<!-- View All Projects (perfectly centered) -->
-		<section id="three" class="view-all-centered">
-		<div class="inner">
-			<header class="major">
-			<h2>View All Projects</h2>
-			</header>
-			<p>Go back and check out my other projects!</p>
-			<ul class="actions">
-			<li><a href="projects.html" class="button next">View All</a></li>
-			</ul>
-		</div>
-		</section>
+      <!-- View All Projects -->
+      <section id="three" class="view-all-centered">
+        <div class="inner">
+          <header class="major"><h2>View All Projects</h2></header>
+          <p>Go back and explore my other robotics, automation, and embedded systems projects.</p>
+          <ul class="actions">
+            <li><a href="projects.html" class="button next">View All</a></li>
+          </ul>
+        </div>
+      </section>
 
       <br />
 

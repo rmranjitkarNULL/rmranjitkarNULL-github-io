@@ -35,13 +35,14 @@
               <h1>2-DoF Planar Manipulator</h1>
             </header>
             <p>
-              The project involved designing, fabricating, and testing a 2-DOF translational manipulator mounted on a Pololu Romi 32U4 mobile platform to 
-              autonomously swap boxes across a three-level shelf. The system was composed entirely of custom 3D-printed ABS components, including 
-              linkages, gears, and bearing mounts, all modeled and iteratively refined in SolidWorks. Each component underwent finite element analysis 
-              (FEA) to ensure strength and stiffness while minimizing weight, and motion simulations were conducted to verify link maneuverability, 
-              workspace reachability, and parallel end-effector motion before fabrication. A 20:1 worm-gear reduction provided the necessary torque for 
-              actuation, while a pantograph linkage maintained the gripper’s parallel orientation to the ground. 
-              Together, these design elements resulted in a robust, efficient manipulator capable of precise and repeatable mechanical operation.
+              This project involved designing, fabricating, and testing a <strong>2-DoF translational planar manipulator</strong> 
+              mounted on a <strong>Pololu Romi 32U4 mobile platform</strong> to autonomously swap boxes across a three-level shelf.
+              The system consisted entirely of <strong>custom 3D-printed ABS components</strong>—including linkages, gears, and bearing mounts—modeled 
+              and iteratively refined in <strong>SolidWorks</strong>. 
+              Each component underwent <strong>finite element analysis (FEA)</strong> to verify strength and stiffness while minimizing weight, 
+              and motion simulations validated <strong>workspace reachability</strong> and <strong>parallel end-effector motion</strong>.
+              A <strong>20:1 worm-gear reduction</strong> provided torque for actuation, while a <strong>pantograph linkage</strong> maintained gripper parallelism. 
+              Together, these design choices yielded a precise, repeatable, and mechanically efficient manipulator.
             </p>
           </div>
         </section>
@@ -53,17 +54,20 @@
 
           <!-- Section 1 -->
           <section>
-            <img src="../assets/images/projects/proj5_RBE2001/RBE200Gearbox.png" alt="" data-position="top center" />
+            <img src="../assets/images/projects/proj5_RBE2001/RBE200Gearbox.png" alt="Manipulator Gearbox Assembly" data-position="top center" />
             <div class="content">
               <div class="inner">
                 <header class="major"><h3>Design and Fabrication</h3></header>
                 <p>
-                  The manipulator was built around a five-bar planar linkage, driven by a DC motor through a 20:1 worm-gear stage and a 
-                  servo motor with a 2:1 gear reduction for smoother, slower motion. All links, mounts, and structural elements were custom-designed 
-                  and 3D-printed in ABS, providing flexibility for rapid iteration. Bearings and press-fit axles ensured low-friction joints and 
-                  consistent alignment. The pantograph-style parallelogram connecting the end-effector maintained horizontal orientation throughout its 
-                  motion, simplifying grasping and improving mechanical precision. Emphasis was placed on geometric symmetry, compactness, and manufacturability 
-                  using student-accessible fabrication methods.
+                  The manipulator was centered around a <strong>five-bar planar linkage</strong> driven by two actuators: 
+                  a <strong>DC motor with a 20:1 worm-gear stage</strong> and a <strong>servo motor with a 2:1 gear reduction</strong> 
+                  for slower, smoother motion. All links, mounts, and brackets were <strong>custom-modeled and 3D-printed in ABS</strong>, 
+                  enabling rapid prototyping and iteration. 
+                  <strong>Press-fit axles</strong> and <strong>ball bearings</strong> were used at each joint to ensure low-friction motion and precise alignment.
+                  The <strong>pantograph-style parallelogram</strong> ensured the gripper remained level throughout its workspace, 
+                  simplifying grasping tasks and improving mechanical precision. 
+                  The final design prioritized <strong>symmetry, manufacturability, and robustness</strong> while using 
+                  accessible student fabrication tools.
                 </p>
               </div>
             </div>
@@ -78,13 +82,15 @@
               <div class="inner">
                 <header class="major"><h3>Analysis & Simulation</h3></header>
                 <p>
-                  The design process was heavily analysis-driven. Using SolidWorks Simulation, 
-                  FEA was performed on critical links to confirm safety factors above 2.0 under expected loading. 
-                  Free-body diagrams (FBDs) and MATLAB modeling quantified forces and torques at each joint, 
-                  validating actuator sizing and link geometry. Additional tipping and stability calculations 
-                  were performed to ensure the Romi platform maintained balance at full extension. 
-                  These analyses guided design refinements—such as shortening the upper links and increasing bushing wall
-                  thickness—to maximize stiffness while minimizing weight and part count.
+                  The design process was <strong>analysis-driven</strong> from concept to implementation. Using 
+                  <strong>SolidWorks Simulation</strong>, <strong>finite element analysis (FEA)</strong> verified that critical links 
+                  maintained <strong>safety factors above 2.0</strong> under load. 
+                  <strong>Free-body diagrams (FBDs)</strong> and <strong>MATLAB modeling</strong> were used to calculate joint torques, 
+                  optimize actuator sizing, and refine link geometry. 
+                  Additional <strong>tipping and stability calculations</strong> ensured that the Romi platform remained balanced 
+                  even when the arm was fully extended. 
+                  Iterative refinements—such as shortening upper links and thickening bushings—improved stiffness and reduced deflection, 
+                  resulting in a more stable and efficient mechanical assembly.
                 </p>
               </div>
             </div>
@@ -92,16 +98,20 @@
 
           <!-- Section 3 -->
           <section>
-            <img src="../assets/images/projects/proj5_RBE2001/romiRenderNice.png" alt="" data-position="top center" />
+            <img src="../assets/images/projects/proj5_RBE2001/romiRenderNice.png" alt="Manipulator CAD Render" data-position="top center" />
             <div class="content">
               <div class="inner">
-                <header class="major"><h3>Control & System Integration</h3></header>
+                <header class="major"><h3>Control and System Integration</h3></header>
                 <p>
-                  While the project emphasized mechanical design, the control system enabled smooth, coordinated motion. 
-                  The Romi chassis provided base mobility, and onboard microcontrollers handled servo and motor actuation using inverse-kinematics-based 
-                  position control. Commands were issued over serial communication for precise incremental movement. 
-                  The software layer primarily ensured reliable coordination between wheel movement 
-                  and manipulator motion, complementing the mechanical system’s inherent stability and accuracy without overcomplicating the architecture.
+                  Although the focus of the project was on mechanical design, an integrated <strong>control system</strong> 
+                  enabled synchronized actuation between the manipulator and the mobile base. 
+                  The <strong>Romi microcontroller</strong> coordinated servo and DC motor actuation through an 
+                  <strong>inverse-kinematics-based position control</strong> framework. 
+                  Motion commands were transmitted via <strong>serial communication</strong>, allowing precise incremental control 
+                  of both joint and base movement. 
+                  The software architecture emphasized <strong>reliability and simplicity</strong>, enabling smooth, 
+                  coordinated motion without overcomplicating the control logic. 
+                  The system demonstrated the synergy between careful mechanical design and efficient embedded control.
                 </p>
               </div>
             </div>
@@ -114,14 +124,17 @@
             </video>
             <div class="content">
               <div class="inner">
-                <header class="major"><h3>Testing & Demonstration</h3></header>
+                <header class="major"><h3>Testing and Performance</h3></header>
                 <p>
-                  During physical testing, the manipulator successfully executed all project deliverables, including navigating to the shelf, 
-                  grasping and swapping boxes at multiple heights, and returning to its starting position. The design withstood extended 
-                  operation without structural deformation or component failure. Performance metrics such as link deflection, repeatability, 
-                  and grasp consistency matched simulated predictions. The system demonstrated high reliability under load and maintained end-effector 
-                  alignment across the entire workspace. Despite early challenges—such as servo overheating and battery voltage drops—iterative mechanical 
-                  and wiring refinements produced a stable and fully functional prototype that met all competition requirements.
+                  During testing, the manipulator successfully performed all required tasks—navigating to the shelf, 
+                  grasping and swapping boxes at multiple heights, and returning to its starting position. 
+                  The structure remained stable and deformation-free under continuous operation, validating 
+                  <strong>FEA predictions</strong> and <strong>mechanical tolerances</strong>. 
+                  Measured <strong>repeatability</strong> and <strong>grasp consistency</strong> closely matched simulation results, 
+                  confirming the accuracy of the design models. 
+                  Despite early challenges such as servo overheating and voltage drops, iterative refinements to 
+                  the power delivery and linkage design produced a reliable and fully functional prototype that 
+                  met all project requirements and competition benchmarks.
                 </p>
               </div>
             </div>
@@ -130,24 +143,21 @@
         </section>
       </div>
 
-		<!-- View All Projects (perfectly centered) -->
-		<section id="three" class="view-all-centered">
-		<div class="inner">
-			<header class="major">
-			<h2>View All Projects</h2>
-			</header>
-			<p>Go back and check out my other projects!</p>
-			<ul class="actions">
-			<li><a href="projects.html" class="button next">View All</a></li>
-			</ul>
-		</div>
-		</section>
+      <!-- View All Projects -->
+      <section id="three" class="view-all-centered">
+        <div class="inner">
+          <header class="major"><h2>View All Projects</h2></header>
+          <p>Go back and check out my other robotics and embedded design projects.</p>
+          <ul class="actions">
+            <li><a href="projects.html" class="button next">View All</a></li>
+          </ul>
+        </div>
+      </section>
 
       <br/>
 
       <!-- Contact -->
       <section class="split">
-        <!-- Email -->
         <section>
           <div class="contact-method">
             <h3><span class="icon solid alt fa-envelope"></span>Email</h3>
@@ -155,7 +165,6 @@
           </div>
         </section>
 
-        <!-- LinkedIn -->
         <section>
           <div class="contact-method">
             <h3><span class="icon brands alt fa-linkedin-in"></span>LinkedIn</h3>
@@ -163,7 +172,6 @@
           </div>
         </section>
 
-        <!-- GitHub -->
         <section>
           <div class="contact-method">
             <h3><span class="icon brands alt fa-github"></span>GitHub</h3>
