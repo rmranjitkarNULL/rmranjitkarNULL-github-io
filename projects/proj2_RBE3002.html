@@ -9,12 +9,16 @@
   </head>
   <body class="is-preload">
 
+    <!-- Wrapper -->
     <div id="wrapper">
+
+      <!-- Header -->
       <header id="header">
-        <a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
+        <a href="index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
         <nav><a href="#menu">Menu</a></nav>
       </header>
 
+      <!-- Menu -->
       <nav id="menu">
         <ul class="links">
           <li><a href="../index.html">Home</a></li>
@@ -23,72 +27,197 @@
         </ul>
       </nav>
 
+      <!-- Overview -->
       <div id="main" class="alt">
         <section id="one">
           <div class="inner">
-            <header class="major"><h1>Autonomous Mapping Robot</h1></header>
+            <header class="major">
+              <h1>Autonomous Mapping Robot</h1>
+            </header>
             <p>
-              This project involved developing a frontier-based autonomous mapping robot using ROS and Python. Built on a TurtleBot3 platform, it integrated LiDAR-based SLAM, A* path planning, pure pursuit control, and AMCL localization to autonomously map and explore unknown environments with minimal supervision.
+              Our team of four developed an <strong>autonomous mapping robot</strong> that implemented 
+              <strong>Simultaneous Localization and Mapping (SLAM)</strong> using <strong>ROS</strong> and <strong>Python</strong>.
+              The system integrated a <strong>LIDAR sensor</strong> for real-time environmental perception, 
+              <strong>frontier-based exploration</strong> to identify unknown regions, and 
+              <strong>path planning and control algorithms</strong> to navigate safely and efficiently.
+              The robot combined <strong>AMCL-based localization</strong>, <strong>obstacle avoidance</strong>, 
+              and <strong>goal selection</strong> in a cohesive framework that leveraged 
+              <strong>A*</strong> for global path planning, <strong>pure pursuit</strong> for trajectory following,
+              and a <strong>potential fields control method</strong> for real-time steering corrections around obstacles.
+              Together, these modules enabled the robot to autonomously explore and map complex environments with 
+              minimal human intervention.
             </p>
           </div>
         </section>
       </div>
 
-      <div id="main">
-        <section id="two" class="spotlights">
-          <section>
-            <img src="../assets/images/projects/proj2_turtlebot/system_architecture.jpg" alt="" data-position="top center" />
-            <div class="content">
-              <div class="inner">
-                <header class="major"><h3>System Architecture</h3></header>
-                <p>
-                  The robot used a modular ROS architecture where gmapping performed SLAM, AMCL handled localization, and custom nodes managed frontier detection and navigation. A* was used for global path planning and pure pursuit for smooth control, creating a robust autonomous exploration loop.
-                </p>
-              </div>
+      <!-- Main Content -->
+      <section id="two" class="spotlights">
+
+        <!-- System Architecture -->
+        <section>
+          <img src="../assets/images/projects/proj2_turtlebot/system_architecture.jpg" alt="System Architecture" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>System Architecture</h3></header>
+              <p>
+                The system was deployed on a <strong>TurtleBot3</strong> platform and organized into a modular network of 
+                <strong>ROS nodes</strong> communicating through topics and services. 
+                At the perception level, <strong>Gmapping</strong> provided real-time <strong>SLAM</strong> by fusing 
+                <strong>LiDAR scans</strong> with odometry data to construct a 2D occupancy grid. 
+                For localization, the <strong>Adaptive Monte Carlo Localization (AMCL)</strong> algorithm maintained a 
+                probabilistic pose estimate through <strong>particle filtering</strong>.
+                A custom <strong>FrontierFinder</strong> node identified unexplored regions on the map, 
+                while the <strong>PathPlanner</strong> node generated collision-free routes using the <strong>A*</strong> algorithm on an 
+                <strong>inflated configuration space (C-space)</strong>. The resulting trajectories were tracked by a 
+                <strong>PathMovement</strong> node implementing <strong>pure pursuit control</strong> to produce 
+                smooth velocity commands. This modular architecture allowed each subsystem—mapping, planning, and control—to
+                operate asynchronously yet cohesively, simplifying testing, debugging, and scalability.
+              </p>
             </div>
-          </section>
-
-          <section>
-            <img src="../assets/images/projects/proj2_turtlebot/pp.gif" alt="" data-position="top center" />
-            <div class="content"><div class="inner"><header class="major"><h3>Pure Pursuit</h3></header>
-            <p>The pure pursuit algorithm allowed smooth trajectory tracking by computing lookahead points and adjusting steering to minimize heading error. This reduced oscillations and improved stability in narrow environments.</p></div></div>
-          </section>
-
-          <section>
-            <img src="../assets/images/projects/proj2_turtlebot/frontier.gif" alt="" data-position="top center" />
-            <div class="content"><div class="inner"><header class="major"><h3>Frontier Exploration</h3></header>
-            <p>The FrontierFinder node identified boundaries between known and unknown areas, clustering frontier cells and ranking them by size and distance. This enabled efficient, goal-oriented exploration.</p></div></div>
-          </section>
-
-          <section>
-            <img src="../assets/images/projects/proj2_turtlebot/amcl.gif" alt="" data-position="top center" />
-            <div class="content"><div class="inner"><header class="major"><h3>Monte Carlo Localization</h3></header>
-            <p>AMCL maintained a probabilistic pose estimate through particle filtering and LIDAR feedback, ensuring accurate localization and robust recovery from drift.</p></div></div>
-          </section>
-
-          <section>
-            <img src="../assets/images/projects/proj2_turtlebot/results.jpg" alt="" data-position="top center" />
-            <div class="content"><div class="inner"><header class="major"><h3>Results</h3></header>
-            <p>The robot mapped a maze-like environment in 101 seconds, autonomously exploring all frontiers with minimal drift. The A* and pure pursuit combination yielded precise navigation and consistent localization performance.</p></div></div>
-          </section>
+          </div>
         </section>
-      </div>
 
+        <!-- Pure Pursuit -->
+        <section>
+          <img src="../assets/images/projects/proj2_turtlebot/pp.gif" alt="Pure Pursuit Control Visualization" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>Pure Pursuit Controller</h3></header>
+              <p>
+                To enable smooth and continuous path tracking, we implemented a <strong>pure pursuit controller</strong>.
+                Instead of moving sequentially between discrete waypoints, the robot continuously calculated a 
+                <strong>lookahead point</strong> along its global path and adjusted its steering based on the angular 
+                error between its current heading and that target point. This approach reduced oscillations, 
+                improved turning smoothness, and maintained curvature continuity. 
+                Additional safeguards such as <strong>rotation-in-place logic</strong> handled sharp turns by pausing linear motion
+                and rotating toward the new heading. Overall, the controller provided stable and predictable tracking 
+                even in narrow or obstacle-dense environments.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Frontier Exploration -->
+        <section>
+          <img src="Include Frontier Exploration GIF" alt="Frontier Exploration Visualization" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>Frontier-Based Exploration</h3></header>
+              <p>
+                To autonomously explore unknown areas, we used a <strong>frontier-based exploration</strong> algorithm.
+                The <strong>occupancy grid</strong> produced by SLAM was continuously analyzed to detect <strong>frontiers</strong>—
+                the boundary cells separating known free space from unexplored regions. 
+                These frontier points were grouped into clusters, and their <strong>centroids</strong> were computed to 
+                represent potential exploration targets. 
+                Each candidate centroid was scored using a <strong>multi-criteria function</strong> considering both 
+                frontier size and distance from the robot, ensuring efficient exploration prioritization.
+                The highest-ranking centroid was selected as the next navigation goal, balancing map coverage and travel cost.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Path Planning -->
+        <section>
+          <img src="Include Path Planning GIF" alt="A* Path Planning Visualization" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>Path Planning</h3></header>
+              <p>
+                For global navigation, we developed a custom <strong>A*</strong> path planner operating on an 
+                <strong>inflated configuration space</strong> that incorporated the robot’s physical footprint.
+                The planner used a heuristic combining <strong>Euclidean distance</strong>, 
+                <strong>distance-to-wall penalties</strong>, and <strong>angular deviation costs</strong> to generate 
+                smooth and collision-free paths. These adjustments minimized abrupt turns and prevented the robot from 
+                hugging walls too closely. The resulting trajectory was published as a <strong>nav_msgs/Path</strong> topic 
+                and tracked in real time by the <strong>pure pursuit controller</strong>, enabling seamless coordination 
+                between planning and execution.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- AMCL -->
+        <section>
+          <img src="Include AMCL GIF" alt="Monte Carlo Localization Visualization" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>Adaptive Monte Carlo Localization</h3></header>
+              <p>
+                Localization was handled through <strong>Adaptive Monte Carlo Localization (AMCL)</strong>, 
+                a <strong>particle filter–based algorithm</strong> that continuously estimated the robot’s pose relative to the map.
+                Each particle represented a possible robot position and orientation, weighted by the likelihood derived from 
+                <strong>LiDAR scans</strong> and <strong>odometry data</strong>. 
+                The algorithm dynamically adjusted the number of particles based on uncertainty, improving computational efficiency.
+                We also enabled <strong>no-motion updates</strong> while stationary to refine the pose estimate and reduce drift
+                without requiring movement. This approach yielded highly stable localization even after long exploration sequences.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Results -->
+        <section>
+          <img src="Insert Results Image" alt="Exploration Results" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>Results and Performance</h3></header>
+              <p>
+                The system was deployed on a <strong>TurtleBot3</strong> in a structured indoor environment. 
+                The robot successfully mapped all reachable areas in approximately <strong>101 seconds</strong>, 
+                completing exploration with minimal human input. 
+                The <strong>pure pursuit controller</strong> produced smooth, stable path tracking, 
+                and the <strong>AMCL localization</strong> maintained accuracy within one robot radius of the true pose during return runs.
+                Although minor <strong>drift</strong> was observed during long traversals, overall system performance was consistent and repeatable.
+                The combination of <strong>frontier exploration</strong>, <strong>A* planning</strong>, and 
+                <strong>pure pursuit control</strong> validated a reliable and efficient pipeline for 
+                <strong>autonomous SLAM-based exploration</strong>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+      <!-- View All Projects -->
       <section id="three" class="view-all-centered">
-        <div class="inner"><header class="major"><h2>View All Projects</h2></header>
-          <p>Go back and check out my other projects!</p>
-          <ul class="actions"><li><a href="projects.html" class="button next">View All</a></li></ul>
+        <div class="inner">
+          <header class="major"><h2>View All Projects</h2></header>
+          <p>Go back and check out my other robotics and embedded systems projects.</p>
+          <ul class="actions">
+            <li><a href="projects.html" class="button next">View All</a></li>
+          </ul>
         </div>
       </section>
 
-      <br />
+      <br>
+
+      <!-- Contact -->
       <section class="split">
-        <section><div class="contact-method"><h3><span class="icon solid alt fa-envelope"></span>Email</h3><a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a></div></section>
-        <section><div class="contact-method"><h3><span class="icon brands alt fa-linkedin-in"></span>LinkedIn</h3><a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a></div></section>
-        <section><div class="contact-method"><h3><span class="icon brands alt fa-github"></span>GitHub</h3><a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a></div></section>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon solid alt fa-envelope"></span>Email</h3>
+            <a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
+          </div>
+        </section>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon brands alt fa-linkedin-in"></span>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
+          </div>
+        </section>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon brands alt fa-github"></span>GitHub</h3>
+            <a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
+          </div>
+        </section>
       </section>
+
     </div>
 
+    <!-- Scripts -->
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/jquery.scrolly.min.js"></script>
     <script src="../assets/js/jquery.scrollex.min.js"></script>
@@ -96,5 +225,6 @@
     <script src="../assets/js/breakpoints.min.js"></script>
     <script src="../assets/js/util.js"></script>
     <script src="../assets/js/main.js"></script>
+
   </body>
 </html>

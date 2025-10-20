@@ -1,192 +1,183 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>FishShocker9000</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>FishShocker9000</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
-				<!-- Header -->
-					<header id="header">
-						<a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="../index.html">Home</a></li>
-							<li><a href="../aboutme.html">About Me</a></li>
-							<li><a href="projects.html">Projects</a></li>
-						</ul>
-					</nav>
+      <!-- Header -->
+      <header id="header">
+        <a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
+        <nav><a href="#menu">Menu</a></nav>
+      </header>
 
+      <!-- Menu -->
+      <nav id="menu">
+        <ul class="links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../aboutme.html">About Me</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
 
-				<!-- Main -->
-					<div id="main" class="alt">
+      <!-- Overview -->
+      <div id="main" class="alt">
+        <section id="one">
+          <div class="inner">
+            <header class="major">
+              <h1>FishShocker9000</h1>
+            </header>
+            <p>
+              The <strong>FishShocker9000</strong> is a custom <strong>embedded bioengineering system</strong> developed for 
+              <strong>UMass Chan Thyme Labs</strong> to assist biological research on zebrafish behavior and response analysis.
+              Designed to deliver <strong>precisely timed high-voltage stimulation pulses</strong>, the system provides researchers
+              with fine-grained control over experimental parameters while maintaining user and animal safety. 
+              The project integrates <strong>custom PCB hardware</strong>, <strong>embedded C/C++ firmware</strong>, and 
+              <strong>Python-based automation scripts</strong> into a modular platform for repeatable, high-throughput testing.
+              Future iterations will incorporate <strong>computer vision (CV)</strong> for real-time fish detection and 
+              automated stimulus triggering, enabling closed-loop experimental control and reducing manual intervention.
+            </p>
+          </div>
+        </section>
+      </div>
 
-						<!-- One -->
-							<section id="one">
-								<div class="inner">
-									<header class="major">
-										<h1>FishShocker9000</h1>
-									</header>
-										<p>
-											FishShocker9000 is an embedded system developed for UMass Chan Thyme Labs to support biological research involving zebrafish studies. 
-											The system is designed to generate controlled high-voltage pulses that can be used in experiments requiring precise electrical stimulation. 
-											At its core, the project combines custom PCB hardware, embedded C/C++ firmware, and testing scripts to provide researchers with a reliable, configurable tool. 
-											Looking forward, FishShocker9000 is being extended with a computer vision (CV) implementation to automate fish detection and stimulation, 
-											further streamlining experimental workflows and reducing the need for manual intervention.
-										</p>
-							</section>
-					</div>
-						<section id="two" class="spotlights">
-							<!--Circuit-->
-                                <section>
-									<img class="spotlight-arch" src="../assets/images/projects/proj3_FSH9K/schm.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Circuit</h3>
-											</header>
-                                            <p>
-												The FishShocker9000 circuit was built around a Teensy 4.1 microcontroller, which generates control signals with precise timing. 
-												These signals are converted into analog outputs using a DAC and amplified through 
-												an operational amplifier to achieve the desired output voltage. 
-												To safely deliver stimulation in water, the amplified signals are routed through 
-												H-bridges, which swap the polarity of the pulses to prevent continuous DC current and minimize electrolysis. 
-												Power for the entire system is supplied by a buck converter, stepping down 
-												the wall outlet voltage to stable levels for both the logic and power electronics. 
-												Finally, the controlled signals are delivered through metal plates, which act as electrodes to transmit the shocks in the zebrafish environment.
-											</p>
-										</div>
-									</div>
-								</section>
-							<!--PCB-->
-                                <section>
-                                    <img src="../assets/images/projects/proj3_FSH9K/routing.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>PCB</h3>
-											</header>
-                                            <p>
-												To integrate and streamline the hardware, we designed a 2-layer PCB in KiCad, which was fully routed and hand-assembled. 
-												The board includes mounting holes for secure installation and uses pogo pins to provide reliable 
-												electrical contact with both the stimulation plates and the Y-cell test chamber. 
-												The PCB consolidates the microcontroller, signal conditioning, and power delivery circuits into 
-												a compact and maintainable design, improving both reliability and usability for laboratory experiments.
-											</p>
-										</div>
-									</div>
-								</section>
-							<!--Firmware-->
-								<section>
-                                    <img src="../assets/images/projects/proj3_FSH9K/codeblock.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Firmware</h3>
-											</header>
-                                            <p>
-												Firmware for FishShocker9000 was developed in C/C++ using the PlatformIO environment, giving the system precise, deterministic control over pulse generation and timing. 
-												The modular code structure (include/, src/, lib/) enables scalability and makes it easier to extend functionality in later versions. 
-												The firmware includes routines for timing adjustments, pulse shaping, and fail-safes to protect the system during high-voltage operation. 
-												As the project evolves, the firmware will also serve as the interface point between 
-												the custom PCB hardware and the computer vision module, enabling automated, closed-loop control of fish stimulation.
-											</p>
-										</div>
-									</div>
-								</section>
-							<!--Software Testing-->
-								<section>
-                                    <img src="../assets/images/projects/proj3_FSH9K/FishShocker9000.png" alt="" data-position="top center" />
-									<!--Include picture of oscilloscope and SPI working as intended-->
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Software Testing</h3>
-											</header>
-                                            <p>
-												To validate performance and ensure reliability, supporting scripts in Python were developed to automate testing and parameter tuning. 
-												These scripts, combined with oscilloscope measurements, allowed for systematic validation of pulse timing, amplitude, and stability across different test conditions. 
-												The use of a software-driven test framework not only provided repeatability but also enabled early preparation for integration with CV-based automation. 
-												In future versions, the software layer will expand to include image processing pipelines 
-												that can detect zebrafish in real time and trigger electrical stimulation automatically, reducing the workload on researchers and improving experimental consistency.
-											</p>
-										</div>
-									</div>
-								</section>
-							</section>
-						<!-- View All Projects (perfectly centered) -->
-							<section id="three" class="view-all-centered">
-								<div class="inner">
-									<header class="major">
-									<h2>View All Projects</h2>
-									</header>
-									<p>Go back and check out my other projects!</p>
-									<ul class="actions">
-									<li><a href="projects.html" class="button next">View All</a></li>
-									</ul>
-								</div>
-							</section>
-					</div>
+      <!-- Main Content -->
+      <section id="two" class="spotlights">
 
-				<br>
+        <!-- Circuit -->
+        <section>
+          <img class="spotlight-arch" src="../assets/images/projects/proj3_FSH9K/schm.png" alt="Circuit Schematic" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>Electrical Circuit Design</h3></header>
+              <p>
+                The <strong>FishShocker9000 circuit</strong> is built around a <strong>Teensy 4.1 microcontroller</strong>, chosen for its
+                high-speed clock and precise timing control. The Teensy generates programmable digital control signals, which are converted
+                into analog outputs via a <strong>digital-to-analog converter (DAC)</strong> and then amplified through a 
+                <strong>precision operational amplifier</strong> stage. To safely deliver biphasic stimulation in aqueous environments,
+                the amplified waveform passes through <strong>H-bridges</strong> that dynamically reverse polarity between pulses—eliminating
+                DC offset and minimizing electrolysis in the fish tank. 
+                A <strong>buck converter</strong> regulates input power, stepping down wall voltage to stable logic and drive rails.
+                Output current is routed through <strong>stainless-steel electrode plates</strong> that transmit the stimulation pulses
+                within the zebrafish testing chamber. The circuit emphasizes electrical isolation, safety, and reproducibility.
+              </p>
+            </div>
+          </div>
+        </section>
 
-				<!-- Contact -->
-					<section class="split">
-						<!-- Email -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon solid alt fa-envelope"></span>
-								Email
-							</h3>
-							<a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
-							</div>
-						</section>
+        <!-- PCB -->
+        <section>
+          <img src="../assets/images/projects/proj3_FSH9K/routing.png" alt="PCB Layout" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>PCB Design and Integration</h3></header>
+              <p>
+                To consolidate and ruggedize the prototype, we designed a <strong>two-layer PCB</strong> in <strong>KiCad</strong> integrating
+                all power, logic, and signal-conditioning circuitry. The layout includes <strong>pogo-pin connectors</strong> for secure,
+                low-resistance contacts with the electrode array and <strong>mounting holes</strong> for stable enclosure placement.
+                The board’s routing strategy isolates high-voltage and logic domains, ensuring noise immunity and operator safety.
+                By embedding the <strong>microcontroller</strong>, <strong>H-bridge drivers</strong>, and <strong>power management</strong> on
+                one board, the final system achieves a compact, maintainable, and easily reproducible platform for lab deployment.
+              </p>
+            </div>
+          </div>
+        </section>
 
-						<!-- LinkedIn -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon brands alt fa-linkedin-in"></span>
-								LinkedIn
-							</h3>
-							<a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
-							</div>
-						</section>
+        <!-- Firmware -->
+        <section>
+          <img src="../assets/images/projects/proj3_FSH9K/codeblock.png" alt="Firmware Structure" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>Embedded Firmware</h3></header>
+              <p>
+                Firmware was implemented in <strong>C/C++</strong> using the <strong>PlatformIO</strong> development environment to ensure 
+                deterministic, low-latency control over <strong>pulse generation</strong> and <strong>timing accuracy</strong>. 
+                The modular directory structure (<code>include/</code>, <code>src/</code>, <code>lib/</code>) supports scalability
+                and maintainability for future features. 
+                The firmware governs <strong>DAC output sequences</strong>, <strong>pulse width modulation</strong>,
+                and <strong>safety interlocks</strong> for high-voltage operation, while providing routines for 
+                <strong>amplitude and duration calibration</strong>. 
+                Future firmware revisions will expand to include <strong>serial communication</strong> with a vision module,
+                enabling real-time closed-loop stimulation triggered by fish detection algorithms.
+              </p>
+            </div>
+          </div>
+        </section>
 
-						<!-- GitHub -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon brands alt fa-github"></span>
-								GitHub
-							</h3>
-							<a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
-							</div>
-						</section>
-					</section>
+        <!-- Software Testing -->
+        <section>
+          <img src="../assets/images/projects/proj3_FSH9K/FishShocker9000.png" alt="Software Testing and Validation" data-position="top center" />
+          <div class="content">
+            <div class="inner">
+              <header class="major"><h3>Software Testing and Validation</h3></header>
+              <p>
+                System validation combined <strong>Python-based automation scripts</strong> with oscilloscope measurements to
+                evaluate <strong>pulse amplitude</strong>, <strong>timing stability</strong>, and <strong>repetition accuracy</strong> 
+                under varying conditions. Automated parameter sweeps ensured repeatable tests and rapid calibration across 
+                experimental setups. The testing framework verified microsecond-level timing precision and reliable high-voltage switching.
+                These scripts will later serve as the foundation for the project’s <strong>computer vision module</strong>, which will
+                employ real-time image analysis to identify zebrafish positions and trigger electrical stimuli automatically. 
+                This upgrade will transform FishShocker9000 into an <strong>intelligent, closed-loop biological instrumentation system</strong>,
+                reducing researcher workload and improving experimental consistency.
+              </p>
+            </div>
+          </div>
+        </section>
 
-			</div>
+      </section>
 
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.scrolly.min.js"></script>
-			<script src="../assets/js/jquery.scrollex.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
+      <!-- View All Projects -->
+      <section id="three" class="view-all-centered">
+        <div class="inner">
+          <header class="major"><h2>View All Projects</h2></header>
+          <p>Explore my other projects in robotics, embedded systems, and biomedical instrumentation.</p>
+          <ul class="actions">
+            <li><a href="projects.html" class="button next">View All</a></li>
+          </ul>
+        </div>
+      </section>
 
-	</body>
+      <br />
+
+      <!-- Contact -->
+      <section class="split">
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon solid alt fa-envelope"></span>Email</h3>
+            <a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
+          </div>
+        </section>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon brands alt fa-linkedin-in"></span>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
+          </div>
+        </section>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon brands alt fa-github"></span>GitHub</h3>
+            <a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
+          </div>
+        </section>
+      </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+  </body>
 </html>

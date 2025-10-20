@@ -1,193 +1,175 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Project Name</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>Embedded Real-Time Digital Oscilloscope</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
+        <nav><a href="#menu">Menu</a></nav>
+      </header>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="../index.html">Home</a></li>
-							<li><a href="../aboutme.html">About Me</a></li>
-							<li><a href="projects.html">Projects</a></li>
-						</ul>
-					</nav>
+      <!-- Menu -->
+      <nav id="menu">
+        <ul class="links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../aboutme.html">About Me</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+      </nav>
 
+      <!-- Overview -->
+      <div id="main" class="alt">
+        <section id="one">
+          <div class="inner">
+            <header class="major">
+              <h1>Embedded Real-Time Digital Oscilloscope</h1>
+            </header>
+            <p>
+              This project involved the progressive development of a <strong>real-time digital oscilloscope and spectrum analyzer</strong>
+              on the <strong>TI EK-TM4C1294XL</strong> microcontroller platform. Across multiple design phases, the system evolved
+              from a bare-metal <strong>C/C++</strong> implementation into a <strong>TI-RTOS</strong>-based embedded instrument capable of
+              <strong>deterministic signal acquisition</strong>, <strong>multi-scale time and voltage scaling</strong>,
+              <strong>edge-trigger detection</strong>, <strong>live CPU-load monitoring</strong>, and <strong>FFT-based spectral analysis</strong>.
+              The final design integrated <strong>DMA-driven sampling</strong>, <strong>timer synchronization</strong>, and <strong>hardware interrupts (Hwi)</strong>
+              to achieve stable 1–2 Msps acquisition with minimal processor overhead.
+            </p>
+          </div>
+        </section>
+      </div>
 
-				<!-- Main -->
-					<div id="main" class="alt">
+      <!-- Main Content -->
+      <div id="main">
+        <section id="two" class="spotlights">
 
-						<!-- One -->
-							<section id="one">
-								<div class="inner">
-									<header class="major">
-										<h1>Embedded Real-Time Digital Oscilloscope</h1>
-									</header>
-										<p>
-											This project was a multi-stage development of a real-time digital oscilloscope and spectrum analyzer
-											on the TI EK-TM4C1294XL microcontroller with its booster pack. Across several iterations, the system
-											evolved from a bare-metal C/C++ application into a robust TI-RTOS-based platform. It ultimately supported
-											real-time signal processing, voltage scaling (100 mV–2 V/div), multi-scale time bases (50 µs–100 ms/div),
-											edge-trigger detection, live CPU load monitoring, FFT-based frequency analysis, and audio PWM output.
-											The overarching goal was to build an embedded instrumentation tool that preserved strict real-time
-											guarantees while continuously adding advanced features.
-										</p>
-							</section>
+          <!-- Section 1 -->
+          <section>
+            <img src="../assets/images/projects/proj1_EmbeddedOscop/image.png" alt="Oscilloscope System Architecture" data-position="top center" />
+            <div class="content">
+              <div class="inner">
+                <header class="major"><h3>Design Approach</h3></header>
+                <p>
+                  The project began as a bare-metal <strong>C/C++ application</strong> implementing core oscilloscope functionality such as
+                  <strong>edge-trigger search</strong>, <strong>voltage scaling</strong>, and <strong>CPU-load measurement</strong>. 
+                  To improve responsiveness, <strong>FIFO buffers</strong> were added to decouple <strong>interrupt service routines (ISRs)</strong>
+                  from main-loop execution. The architecture was later migrated to <strong>TI-RTOS</strong>, where the
+                  <strong>ADC sampling routine</strong> was converted into a <strong>zero-latency Hardware Interrupt (Hwi)</strong>.
+                  Core functionality was modularized into prioritized RTOS tasks for <strong>waveform capture</strong>, 
+                  <strong>signal processing</strong>, <strong>display refresh</strong>, and <strong>user input handling</strong>.
+                  Synchronization primitives—<strong>Semaphores</strong>, <strong>Mailboxes</strong>, and <strong>Mutexes</strong>—ensured safe data sharing
+                  between concurrent tasks. Later iterations integrated a <strong>1024-point FFT</strong> using the <strong>KissFFT library</strong>,
+                  <strong>Blackman windowing</strong> for spectral resolution, and <strong>DMA-based ping-pong buffering</strong> for efficient continuous sampling.
+                  Additional enhancements included <strong>Timer0A-based frequency measurement</strong> and <strong>PWM-driven audio output</strong>,
+                  demanding precise coordination of <strong>timers</strong> and synchronized ISR updates.
+                </p>
+              </div>
+            </div>
+          </section>
 
-					</div>
+          <!-- Section 2 -->
+          <section>
+            <img src="../assets/images/projects/proj1_EmbeddedOscop/falling_1v_50us.png" alt="Trigger and DMA Implementation" data-position="top center" />
+            <div class="content">
+              <div class="inner">
+                <header class="major"><h3>Implementation</h3></header>
+                <p>
+                  The oscilloscope’s real-time performance was achieved through <strong>DMA buffering</strong>, adjustable <strong>time bases</strong>,
+                  and <strong>trigger-synchronized sampling</strong> at 1–2 Msps. Under <strong>TI-RTOS scheduling</strong>, the
+                  <strong>Waveform Task</strong> guaranteed deterministic sampling, while the <strong>Processing Task</strong> handled 
+                  waveform scaling and <strong>FFT computation</strong>. The <strong>Display Task</strong> continuously updated the LCD with 
+                  time-domain plots, frequency grids, and <strong>CPU load indicators</strong>, while the <strong>User Input Task</strong>
+                  managed pushbutton events through Mailboxes.
+                  Transitioning from ISR-driven to <strong>DMA-based sampling</strong> reduced CPU utilization from approximately
+                  <strong>73 %</strong> to <strong>15 %</strong> at 1 Msps, and <strong>30 %</strong> at 2 Msps, leaving substantial headroom for real-time computation.
+                  Frequency-domain visualization was implemented by converting FFT magnitudes to a <strong>dB-scale spectrum</strong>,
+                  with users able to toggle between time- and frequency-domain modes. Other interactive features included
+                  <strong>rising/falling edge triggering</strong>, <strong>dynamic voltage scaling</strong>, and <strong>real-time frequency readout</strong>
+                  for embedded signal analysis.
+                </p>
+              </div>
+            </div>
+          </section>
 
-                    <div id="main">
-						<!-- One -->
-							<section id="two" class="spotlights">
-							<!--Section 1-->
-                                <section>
-                                    <img src="../assets/images/projects/proj1_EmbeddedOscop/image.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Design Approach</h3>
-											</header>
-                                            <p>
-												The project began in bare-metal C/C++, where we implemented core oscilloscope functionality with edge-trigger search,
-												voltage scaling, and CPU load measurement. FIFO queues were introduced to eliminate data races between
-												ISRs and the main loop. The system was then ported to TI-RTOS, where the ADC ISR was converted into a
-												zero-latency Hardware Interrupt (Hwi), and responsibilities were distributed across prioritized tasks for
-												waveform capture, signal processing, display updates, and user input handling. Semaphores, Mailboxes, and
-												Mutexes ensured synchronization without shared-data bugs. Later stages extended the design with a
-												1024-point FFT using the KissFFT library, Blackman windowing for frequency analysis, and a migration to
-												DMA-based ping-pong buffering for efficient ADC sampling. Finally, advanced I/O features were added,
-												including Timer0A-based frequency measurement and PWM-driven audio playback, requiring careful
-												coordination of timers and synchronized ISR updates.
-											</p>
-										</div>
-									</div>
-								</section>
-							<!--Section 2-->
-								<section>
-                                    <img src="../assets/images/projects/proj1_EmbeddedOscop/falling_1v_50us.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Implementation</h3>
-											</header>
-                                            <p>
-												At the core of the system was real-time sampling at 1–2 Msps, enabled by DMA buffering, adjustable
-												time bases, and trigger-synchronized capture. Under TI-RTOS scheduling, the Waveform Task guaranteed
-												sample collection and trigger detection, while the Processing Task scaled waveform data or executed FFT
-												computations. The Display Task refreshed the LCD with waveforms, frequency grids, labels, and CPU load
-												measurements, and the User Input Task managed button events through Mailboxes. CPU utilization was
-												displayed in real time by comparing background loop counts with ISR execution. Migrating from ISR-based
-												sampling to DMA reduced CPU load dramatically—from roughly 73% to 15% at 1 Msps and 30% at 2 Msps—leaving
-												significant headroom for other computations. FFT results were converted to decibel scale and rendered
-												as a spectrum, while users could still switch back to time-domain visualization. Additional interactive
-												features included rising and falling edge trigger modes, multi-level voltage scaling, real-time frequency
-												display, and audio playback via PWM.
-											</p>
-										</div>
-									</div>
-								</section>
-							<!--Section 3-->
-								<section>
-                                    <img src="../assets/images/projects/proj1_EmbeddedOscop/20us_rising_1v_waveform.png" alt="" data-position="top center" />
-									<div class="content">
-										<div class="inner">
-											<header class="major">
-												<h3>Results</h3>
-											</header>
-                                            <p>
-												By the final stage, the platform operated as a dual-mode oscilloscope and spectrum analyzer with
-												audio generation capabilities, all while meeting strict real-time deadlines. The system consistently
-												achieved deterministic sampling without missed data, provided stable time- and frequency-domain displays,
-												and maintained low CPU load under RTOS scheduling. These results demonstrated how real-time operating
-												systems, DMA, and careful interrupt prioritization can transform a basic bare-metal program into a
-												scalable embedded instrumentation tool. The project reinforced key skills in real-time scheduling,
-												signal processing, DMA utilization, hardware/software co-design, and performance optimization for
-												embedded systems development.
-											</p>
-										</div>
-									</div>
-								</section>
-							</section>
+          <!-- Section 3 -->
+          <section>
+            <img src="../assets/images/projects/proj1_EmbeddedOscop/20us_rising_1v_waveform.png" alt="Final Oscilloscope Output" data-position="top center" />
+            <div class="content">
+              <div class="inner">
+                <header class="major"><h3>Results and Performance</h3></header>
+                <p>
+                  The completed platform functioned as a dual-mode <strong>oscilloscope and spectrum analyzer</strong> with
+                  <strong>real-time audio generation</strong>, all while maintaining deterministic timing. 
+                  Sampling remained stable across all voltage and time scales with <strong>no dropped frames</strong> or 
+                  <strong>missed triggers</strong>. The system delivered high-fidelity time- and frequency-domain displays,
+                  operating within tight RTOS deadlines. 
+                  Measured performance showed sustained 2 Msps throughput with <strong>15–30 % CPU utilization</strong> under DMA,
+                  validating the efficiency of the <strong>task-based RTOS architecture</strong>. 
+                  This project reinforced core principles in <strong>real-time scheduling</strong>,
+                  <strong>signal processing</strong>, <strong>DMA optimization</strong>, and <strong>hardware/software co-design</strong>—
+                  demonstrating how low-level embedded control and RTOS concurrency can yield a scalable, professional-grade 
+                  instrumentation tool.
+                </p>
+              </div>
+            </div>
+          </section>
 
-								<!-- View All Projects (perfectly centered) -->
-							<section id="three" class="view-all-centered">
-							<div class="inner">
-								<header class="major">
-								<h2>View All Projects</h2>
-								</header>
-								<p>Go back and check out my other projects!</p>
-								<ul class="actions">
-								<li><a href="projects.html" class="button next">View All</a></li>
-								</ul>
-							</div>
-							</section>
+        </section>
+      </div>
 
-					</div>
+      <!-- View All Projects -->
+      <section id="three" class="view-all-centered">
+        <div class="inner">
+          <header class="major"><h2>View All Projects</h2></header>
+          <p>Explore my other projects in embedded systems, robotics, and real-time control.</p>
+          <ul class="actions">
+            <li><a href="projects.html" class="button next">View All</a></li>
+          </ul>
+        </div>
+      </section>
 
-				<br>
+      <br />
 
-				<!-- Contact -->
-					<section class="split">
-						<!-- Email -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon solid alt fa-envelope"></span>
-								Email
-							</h3>
-							<a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
-							</div>
-						</section>
+      <!-- Contact -->
+      <section class="split">
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon solid alt fa-envelope"></span>Email</h3>
+            <a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
+          </div>
+        </section>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon brands alt fa-linkedin-in"></span>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
+          </div>
+        </section>
+        <section>
+          <div class="contact-method">
+            <h3><span class="icon brands alt fa-github"></span>GitHub</h3>
+            <a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
+          </div>
+        </section>
+      </section>
 
-						<!-- LinkedIn -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon brands alt fa-linkedin-in"></span>
-								LinkedIn
-							</h3>
-							<a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
-							</div>
-						</section>
+    </div>
 
-						<!-- GitHub -->
-						<section>
-							<div class="contact-method">
-							<h3>
-								<span class="icon brands alt fa-github"></span>
-								GitHub
-							</h3>
-							<a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
-							</div>
-						</section>
-					</section>
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
 
-			</div>
-
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.scrolly.min.js"></script>
-			<script src="../assets/js/jquery.scrollex.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
-
-	</body>
+  </body>
 </html>
