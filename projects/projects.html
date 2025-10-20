@@ -5,40 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/project_list.css" /> <!-- grid + hover video style -->
+    <link rel="stylesheet" href="../assets/css/project_list.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
   </head>
 
   <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-
-      <!-- Header -->
-      <header id="header" class="alt style2">
-        <a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
-        <nav><a href="#menu">Menu</a></nav>
-      </header>
-
-      <!-- Menu -->
-      <nav id="menu">
-        <ul class="links">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../aboutme.html">About Me</a></li>
-          <li><a href="projects.html">Projects</a></li>
-        </ul>
-      </nav>
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>Projects</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/project_list.css" /> <!-- our new grid style -->
-    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-  </head>
-  <body class="is-preload">
-
     <!-- Wrapper -->
     <div id="wrapper">
 
@@ -75,15 +47,17 @@
       <!-- Main Content -->
       <div id="main" class="alt">
 
-        <!-- Project Grid Section -->
         <section id="projects" class="projects">
           <div class="inner">
             <div class="projects-grid">
 
               <!-- RBE 3001 - 4-DoF Arm -->
-              <a href="proj4_4DoFArm.html" class="project-link">
-                <div class="project-card" data-tags="MATLAB">
-                  <img src="../assets/images/projects/proj4_RBE3001/robotArm.jpg" alt="4-DoF Robot Arm">
+              <div class="project-card" data-tags="MATLAB">
+                <img src="../assets/images/projects/proj4_RBE3001/robotArm.jpg" alt="4-DoF Robot Arm">
+                <a href="https://github.com/WPI-RBE-300n/RBE3001_A25_16" target="_blank" class="github-icon-btn" title="View on GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="proj4_4DoFArm.html" class="project-link">
                   <div class="content">
                     <h3>Robotic Arm</h3>
                     <p>A 4-DOF robotic arm designed for pick-and-place</p>
@@ -91,13 +65,16 @@
                       <span>MATLAB</span>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
 
               <!-- Embedded Oscilloscope -->
-              <a href="proj1_EmbeddedOscope.html" class="project-link">
-                <div class="project-card" data-tags="C/C++ RTOS">
-                  <img src="../assets/images/projects/proj1_EmbeddedOscop/escope.png" alt="TI-Board">
+              <div class="project-card" data-tags="C/C++ RTOS">
+                <img src="../assets/images/projects/proj1_EmbeddedOscop/escope.png" alt="TI-Board">
+                <!-- <a href="https://github.com/rmranjitkar/embedded-oscope" target="_blank" class="github-icon-btn" title="View on GitHub">
+                  <i class="fab fa-github"></i>
+                </a> -->
+                <a href="proj1_EmbeddedOscope.html" class="project-link">
                   <div class="content">
                     <h3>Embedded Oscilloscope</h3>
                     <p>An Embedded Oscilloscope programmed bare-metal and RTOS</p>
@@ -106,13 +83,16 @@
                       <span>RTOS</span>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
 
               <!-- RBE 3002 - LiDAR Robot -->
-              <a href="proj2_RBE3002.html" class="project-link">
-                <div class="project-card" data-tags="ROS Python Linux">
-                  <img src="../assets/images/projects/proj2_turtlebot/turtlebot.png" alt="Turtlebot">
+              <div class="project-card" data-tags="ROS Python Linux">
+                <img src="../assets/images/projects/proj2_turtlebot/turtlebot.png" alt="Turtlebot">
+                <a href="https://github.com/RBE300X-Lab/RBE3002_D25_Team05" target="_blank" class="github-icon-btn" title="View on GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="proj2_RBE3002.html" class="project-link">
                   <div class="content">
                     <h3>Autonomous Mapping Robot</h3>
                     <p>A robot using SLAM to traverse a maze</p>
@@ -122,13 +102,16 @@
                       <span>Linux</span>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
 
-              <!-- FSHKR9K -->
-              <a href="proj3_fshkr9k.html" class="project-link">
-                <div class="project-card" data-tags="C/C++ PCB Python CircuitDesign">
-                  <img src="../assets/images/projects/proj3_FSH9K/FishShocker9000.png" alt="FSHKR9K PCB">
+              <!-- FishShocker9000 -->
+              <div class="project-card" data-tags="C/C++ PCB Python CircuitDesign">
+                <img src="../assets/images/projects/proj3_FSH9K/FishShocker9000.png" alt="FSHKR9K PCB">
+                <a href="https://github.com/rmranjitkarNULL/FishShocker9000" target="_blank" class="github-icon-btn" title="View on GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="proj3_fshkr9k.html" class="project-link">
                   <div class="content">
                     <h3>FishShocker9000</h3>
                     <p>A custom Embedded System designed to shock Zebra fish for research</p>
@@ -139,13 +122,33 @@
                       <span>Circuit Design</span>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
+
+               <!-- ECE 3829: PMOS -->
+              <div class="project-card" data-tags="C/C++ PCB Python CircuitDesign">
+                <img src="../assets/images/projects/proj3_FSH9K/FishShocker9000.png" alt="RBE2002 Robot">
+                <!-- <a href="https://github.com/rmranjitkarNULL/RBE2002FINAL" target="_blank" class="github-icon-btn" title="View on GitHub">
+                  <i class="fab fa-github"></i>
+                </a> -->
+                <a href="proj6_3829Lab3.html" class="project-link">
+                  <div class="content">
+                    <h3>Light Sensor Interface</h3>
+                    <p>Interfacing the PMOD ALS on the Basys3</p>
+                    <div class="tags">
+                      <span>Verilog</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
 
               <!-- RBE 2001 -->
-              <a href="proj5_RBE2001.html" class="project-link">
-                <div class="project-card" data-tags="C/C++ SolidWorks MATLAB">
-                  <img src="../assets/images/projects/proj5_RBE2001/2001RomiRender.png" alt="2D Delta Manipulator">
+              <div class="project-card" data-tags="C/C++ SolidWorks MATLAB">
+                <img src="../assets/images/projects/proj5_RBE2001/2001RomiRender.png" alt="2D Delta Manipulator">
+                <a href="https://github.com/notMarque/RBE2001Group1Final" target="_blank" class="github-icon-btn" title="View on GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="proj5_RBE2001.html" class="project-link">
                   <div class="content">
                     <h3>2-DoF Planar Manipulator</h3>
                     <p>A 2 DoF Serial Manipulator designed for moving boxes</p>
@@ -155,53 +158,45 @@
                       <span>MATLAB</span>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              </div>
 
               <!-- RBE 2002 -->
-              <a href="proj3_fshkr9k.html" class="project-link">
-                <div class="project-card" data-tags="C/C++ PCB Python CircuitDesign">
-                  <img src="../assets/images/projects/proj3_FSH9K/FishShocker9000.png" alt="FSHKR9K PCB">
+              <div class="project-card" data-tags="C/C++ PCB Python CircuitDesign">
+                <img src="../assets/images/projects/proj3_FSH9K/FishShocker9000.png" alt="RBE2002 Robot">
+                <a href="https://github.com/rmranjitkarNULL/RBE2002FINAL" target="_blank" class="github-icon-btn" title="View on GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="proj6_RBE2002.html" class="project-link">
                   <div class="content">
-                    <h3>FishShocker9000</h3>
-                    <p>A custom Embedded System designed to shock Zebra fish for research</p>
+                    <h3>Embedded Robot</h3>
+                    <p>An autonomous embedded robot built for RBE 2002</p>
                     <div class="tags">
                       <span>C/C++</span>
-                      <span>PCB</span>
-                      <span>Python</span>
-                      <span>Circuit Design</span>
                     </div>
                   </div>
-                </div>
-              </a>
-                
+                </a>
+              </div>
 
             </div>
           </div>
         </section>
-
       </div>
 
-    </br>
       <!-- Contact -->
       <section class="split contact">
-        <!-- Email -->
         <section>
           <div class="contact-method">
             <h3><span class="icon solid alt fa-envelope"></span> Email</h3>
             <a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
           </div>
         </section>
-
-        <!-- LinkedIn -->
         <section>
           <div class="contact-method">
             <h3><span class="icon brands alt fa-linkedin-in"></span> LinkedIn</h3>
             <a href="https://www.linkedin.com/in/ryanranjitkar/">linkedin.com/in/ryanranjitkar</a>
           </div>
         </section>
-
-        <!-- GitHub -->
         <section>
           <div class="contact-method">
             <h3><span class="icon brands alt fa-github"></span> GitHub</h3>
@@ -210,7 +205,7 @@
         </section>
       </section>
 
-    </di>
+    </div>
 
     <!-- Scripts -->
     <script src="../assets/js/jquery.min.js"></script>
@@ -222,17 +217,3 @@
     <script src="../assets/js/main.js"></script>
   </body>
 </html>
-
-<!-- Project -->
-              <!-- <a href="" class="project-link">
-                <div class="project-card" data-tags="ros c++">
-                  <img src="../assets/images/" alt="">
-                  <div class="content">
-                    <h3></h3>
-                    <p></p>
-                    <div class="tags">
-                      <span></span>
-                    </div>
-                  </div>
-                </div>
-              </a> -->

@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Light Sensor Interface on Basys3 Board</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="../index.html" class="logo"><strong>Ryan</strong> <span>Ranjitkar</span></a>
+						<nav><a href="#menu">Menu</a></nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="../aboutme.html">About Me</a></li>
+							<li><a href="projects.html">Projects</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Light Sensor Interface on Basys3 Board</h1>
+									</header>
+										<p>
+											This FPGA-based project focused on developing a reliable and high-speed light sensor interface 
+											on the Digilent Basys3 board using Verilog. The system implemented a custom Master SPI interface 
+											capable of reading sensor data at up to 2&nbsp;Mbps, with simulation and hardware validation 
+											confirming transfer accuracy above 99%. Through careful timing design and clock-domain 
+											synchronization, the interface achieved robust, real-time light sensing suitable for 
+											laboratory instrumentation and embedded FPGA systems.
+										</p>
+							</section>
+					</div>
+
+					<div id="main">
+						<section id="two" class="spotlights">
+							<!-- Section 1 -->
+							<section>
+								<img src="../assets/images/projects/proj2_LightSensor/spi_timing_diagram.png" alt="" data-position="top center" />
+								<div class="content">
+									<div class="inner">
+										<header class="major">
+											<h3>Design Approach</h3>
+										</header>
+										<p>
+											The design began with constructing a custom SPI Master in Verilog to communicate with an external 
+											light sensor module. The SPI logic was built around a configurable clock divider and a finite state 
+											machine (FSM) that governed the data transmission, reception, and chip-select control. 
+											A simulation-based development cycle allowed fine-tuning of timing and setup/hold parameters. 
+											A Verilog testbench was written to emulate sensor responses under varying light intensities, 
+											reducing debugging time by roughly 30%. 
+											The FPGA system clock was configured at 10&nbsp;MHz using the Mixed-Mode Clock Manager (MMCM), 
+											and a double flip-flop synchronizer was introduced to safely interface asynchronous sensor inputs, 
+											eliminating metastability and improving timing reliability by approximately 40%.
+										</p>
+									</div>
+								</div>
+							</section>
+
+							<!-- Section 2 -->
+							<section>
+								<img src="../assets/images/projects/proj2_LightSensor/hardware_interface.png" alt="" data-position="top center" />
+								<div class="content">
+									<div class="inner">
+										<header class="major">
+											<h3>Implementation</h3>
+										</header>
+										<p>
+											The SPI Master operated in Mode&nbsp;0 (CPOL=0, CPHA=0) with an adjustable baud rate up to 2&nbsp;Mbps. 
+											A control FSM managed <code>MOSI</code>, <code>MISO</code>, and <code>SCLK</code> signals across 
+											transmission phases while maintaining precise timing margins verified in Vivado simulations. 
+											On the Basys3 hardware, the SPI signals were routed through PMOD headers to an external light 
+											sensor module. Data was sampled, synchronized, and displayed in real time using onboard LEDs 
+											and the seven-segment display. Hardware validation under different light levels showed 
+											consistent data capture with over 99% transmission reliability and no metastability failures. 
+											All modules were synthesized using Xilinx Vivado, and timing reports confirmed 
+											successful operation at the target 10&nbsp;MHz system clock.
+										</p>
+									</div>
+								</div>
+							</section>
+
+							<!-- Section 3 -->
+							<section>
+								<img src="../assets/images/projects/proj2_LightSensor/system_overview.png" alt="" data-position="top center" />
+								<div class="content">
+									<div class="inner">
+										<header class="major">
+											<h3>Results</h3>
+										</header>
+										<p>
+											The final design delivered a fully functional FPGA-based light sensor interface with 
+											reliable SPI communication, precise timing control, and real-time data acquisition. 
+											Simulations and on-board testing validated performance across dynamic light conditions, 
+											with SPI throughput stable at 2&nbsp;Mbps and signal integrity maintained across all test cases. 
+											The integration of the MMCM-generated clock and synchronizer logic ensured deterministic timing, 
+											while the FSM-based architecture maintained clean transitions between transmit and receive states. 
+											This project demonstrated proficiency in Verilog design, timing analysis, and FPGA-based sensor 
+											interfacing — key foundations for larger embedded and hardware co-design systems.
+										</p>
+									</div>
+								</div>
+							</section>
+						</section>
+
+						<!-- View All Projects -->
+						<section id="three" class="view-all-centered">
+							<div class="inner">
+								<header class="major">
+									<h2>View All Projects</h2>
+								</header>
+								<p>Go back and check out my other projects!</p>
+								<ul class="actions">
+									<li><a href="projects.html" class="button next">View All</a></li>
+								</ul>
+							</div>
+						</section>
+					</div>
+
+				<br>
+
+				<!-- Contact -->
+				<section class="split">
+					<section>
+						<div class="contact-method">
+							<h3><span class="icon solid alt fa-envelope"></span> Email</h3>
+							<a href="mailto:rmranjitkar@wpi.edu">rmranjitkar@wpi.edu</a>
+						</div>
+					</section>
+
+					<section>
+						<div class="contact-method">
+							<h3><span class="icon brands alt fa-linkedin-in"></span> LinkedIn</h3>
+							<a href="https://www.linkedin.com/in/ryanranjitkar/">https://www.linkedin.com/in/ryanranjitkar/</a>
+						</div>
+					</section>
+
+					<section>
+						<div class="contact-method">
+							<h3><span class="icon brands alt fa-github"></span> GitHub</h3>
+							<a href="https://github.com/rmranjitkar">https://github.com/rmranjitkar</a>
+						</div>
+					</section>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>

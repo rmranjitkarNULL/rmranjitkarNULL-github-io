@@ -179,3 +179,35 @@
   -webkit-line-clamp: 2; /* show only two lines */
   -webkit-box-orient: vertical;
 }
+
+.project-card {
+  position: relative; /* allows overlay positioning */
+  overflow: hidden;
+}
+
+/* Floating GitHub button */
+.github-icon-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(36, 41, 46, 0.85); /* dark GitHub gray w/ slight transparency */
+  color: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.github-icon-btn:hover {
+  background: #000;
+  transform: scale(1.1);
+}
+
+.github-icon-btn i {
+  font-size: 18px;
+}
